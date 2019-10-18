@@ -1,2 +1,9 @@
 # projet-java-2019-projetjava-8
-projet-java-2019-projetjava-8 created by GitHub Classroom
+
+##### This project will be a subnet calculator with a web service RESTful
+
+The contributors of this project are :
+
+- CORNIL Jean
+- MAGNES Simon
+- MEYERS Humbert
