@@ -1,12 +1,15 @@
 /**
  * 
  */
+/**
+ * 
+ */
 package projet;
 
 /**
  * @author Simon
  *
  */
-public class Carte {
+public class Deck {
 
 }
