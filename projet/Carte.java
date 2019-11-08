@@ -9,4 +9,6 @@ package projet;
  */
 public class Carte {
 
+	public int num;
+	public String couleur;
 }
