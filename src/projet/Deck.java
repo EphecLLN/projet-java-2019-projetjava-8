@@ -24,7 +24,7 @@ public class Deck{
 		
 		for(int couleur = 0; couleur < 4; couleur++) {
 			for(int valeur = 0; valeur < 13; valeur++) {
-				paquet[i++] = Carte(couleur, valeur);
+				paquet[i++] = new Carte(couleur, valeur);
 			}
 		}
 		compteurCarte = 0;       //Nouveau paquet de carte
@@ -52,5 +52,29 @@ public class Deck{
   
  	 compteurCarte = 0;   // Reset current card to deal
     }
+
+
+	/**
+	 * @return the paquet
+	 */
+	public Carte[] getPaquet() {
+		return paquet;
+	}
+
+
+	/**
+	 * @param paquet the paquet to set
+	 */
+	public void setPaquet(Carte[] paquet) {
+		this.paquet = paquet;
+	}
+
+
+	/**
+	 * @return the ncartes
+	 */
+	public static int getNcartes() {
+		return NCARTES;
+	}
 
 }
