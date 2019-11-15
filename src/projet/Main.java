@@ -18,6 +18,7 @@ public class Main{
 			for(int j=0; j < 13; j++) {
 				Carte carte = new Carte(i, j);
 				System.out.println(carte.toString());
+				carte.estSpecial();
 			}
 		}
 	}
