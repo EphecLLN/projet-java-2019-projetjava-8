@@ -4,7 +4,7 @@
 package projet;
 
 /**
- * @author Simon
+ * @author Jean Cornil
  *
  */
 public class Joueurs {
