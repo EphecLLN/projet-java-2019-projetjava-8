@@ -15,10 +15,21 @@ public class Joueurs {
 	private int[][] cartesVisibles;
 	private int[][] cartesMain;
 	
+	public Joueurs(){
+		id = 0;
+		nbrCartes = 0;
+	}
 	
 	public Joueurs(int id, int nbrCartes){
-		id = this.id;
-		nbrCartes = this.nbrCartes;
+		this.id = id;
+		this.nbrCartes = nbrCartes;
+		for(int i = 1; i <= 3; i++){
+			for  (int j = 1 ; j <= 4; j++)
+			{
+				cartesCachees [i][j] = 0;
+			}
+		}
+		
 	}
 	
 	
