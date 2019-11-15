@@ -7,38 +7,49 @@ package projet;
  * @author Simon
  *
  */
-public class Carte {
 
-	private static final String[] couleurs = {"coeur","trefle","pique","carreau"};
-	private static final String[] valeurs = {"2","3","4","5","6","7","8","9","10","Valet","Dame","Rois","As"};
+public class Carte{
 
-	static Carte [] deck = new Carte[52];
-	
-	/**
-	 * Constructeurs du deck créant les 52 cartes
-	 */
-	public static Carte[] creationCarte() {
-		int k=0;
-		for (int i=0; i< couleurs.length; i++) { 
-			for (int j = 0; j< valeurs.length; j++) {
-				deck[k]= new Carte();
-				//System.out.println(deck[k].toString());
-				//return (Carte[])deck[k].valeurs;
-				//return (Carte[])deck[k].couleurs;
-				System.out.println(deck[k].valeurs +" "+ deck[k].couleurs);
-				k++;
+	private static final String[] couleur = { "Carreau", "Coeur", "Trèfle", "Pique"};
+	private static final String[] valeur = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Valet", "Dame", "Roi", "As"};
+
+	private byte carteCouleur;
+	private byte carteValeur;
+
+	public Carte( int suit, int rank ){
+		carteValeur = (byte) rank;
+		carteCouleur = (byte) suit;
+	}
+
+	public int couleur(){
+		return ( carteCouleur );         // This is a shorthand for:
+		//   this.cardSuit
+	}
+
+	public String couleurStr(){
+		return( couleur[ carteCouleur ] );  // This is a shorthand for:
+		//   this.Suit[ this.cardSuit ]
+	}
+
+	public  int valeur(){
+		return ( carteValeur );
+	}
+
+	public String valeurStr(){
+		return ( valeur[ carteValeur ] );
+	}
+
+	public String toString(){
+		return ( valeur[ carteValeur ] + " de " + couleur[ carteCouleur ] );
+	}
+/*
+	public static void main(String[] args) {
+		for(int i=0; i < couleur.length; i++) {
+			for(int j=0; j < valeur.length; j++) {
+				Carte carte = new Carte(i, j);
+				System.out.println(carte.toString());
 			}
 		}
-		 return deck;
-	
 	}
-	public static void main(String[] args) {
-		creationCarte();
-		//System.out.println(deck.toString());
-	}
-	@Override
-	public String toString() {
-		return "Carte [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
-	}
+	*/
 }
