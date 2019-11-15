@@ -27,9 +27,24 @@ public class Carte{
 	public  void estSpecial() {
 		switch(this.valeur[ this.carteValeur ]) {
 			case "2" : 
-				System.out.println("Je suis special"); 
+				System.out.println("Je suis special, Je remet à 0"); 
 				break;
-			default :
+			case "3":
+				System.out.println("Je suis special, je copie la carte précédente"); 
+				break;
+			case "7":
+				System.out.println("Je suis special, Le suivant doit jouer une carte inférieure à 7"); 
+				break;
+			case "8":
+				System.out.println("Je suis special, le joueur suivant passe son tour"); 
+				break;
+			case "10":
+				System.out.println("Je suis special, Je coupe le jeu"); 
+				break;
+			case "As": 
+				System.out.println("Je suis special, j' attaque un joueur de mon choix"); 
+				break;
+			default : 
 				System.out.println("Je suis banal");
 		}
 	}
