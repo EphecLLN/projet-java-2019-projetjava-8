@@ -8,7 +8,6 @@ package projet;
  *
  */
 public class Joueurs {
-	private Deck mainJoueur;
 	private int nbrCartes;
 	private int id;
 	
