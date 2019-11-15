@@ -11,9 +11,22 @@ public class Joueurs {
 	private int nbrCartes;
 	private int id;
 	
-	private int[][] cartesCachees;
-	private int[][] cartesVisibles;
-	private int[][] cartesMain;
+	private int[][] cartesCachees= {
+		    {0,0},
+		    {0,0},
+		    {0,0},
+		};
+	private int[][] cartesVisibles= {
+		    {0,0},
+		    {0,0},
+		    {0,0},
+		};;
+	private int[][] cartesMain= {
+		    {0,0},
+		    {0,0},
+		    {0,0},
+		    {0,0},
+		};
 	
 	public Joueurs(){
 		id = 0;
@@ -23,16 +36,8 @@ public class Joueurs {
 	public Joueurs(int id, int nbrCartes){
 		this.id = id;
 		this.nbrCartes = nbrCartes;
-		for(int i = 1; i <= 3; i++){
-			for  (int j = 1 ; j <= 4; j++)
-			{
-				cartesCachees [i][j] = 0;
-			}
-		}
-		
 	}
-	
-	
+
 	/**
 	 * @param carteJoueurs
 	 * @param i de 0 a 2
@@ -132,4 +137,27 @@ public class Joueurs {
 		this.id = id;
 	}
 
+	public int[][] getCartesCachees() {
+		return cartesCachees;
+	}
+
+	public void setCartesCachees(int[][] cartesCachees) {
+		this.cartesCachees = cartesCachees;
+	}
+
+	public int[][] getCartesVisibles() {
+		return cartesVisibles;
+	}
+
+	public void setCartesVisibles(int[][] cartesVisibles) {
+		this.cartesVisibles = cartesVisibles;
+	}
+
+	public int[][] getCartesMain() {
+		return cartesMain;
+	}
+
+	public void setCartesMain(int[][] cartesMain) {
+		this.cartesMain = cartesMain;
+	}
 }
