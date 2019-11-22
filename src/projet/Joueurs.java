@@ -20,7 +20,7 @@ public class Joueurs {
 		    {0,0},
 		    {0,0},
 		    {0,0},
-		};;
+		};
 	private int[][] cartesMain= {
 		    {0,0},
 		    {0,0},
@@ -37,7 +37,7 @@ public class Joueurs {
 		this.id = id;
 		this.nbrCartes = nbrCartes;
 	}
-
+	
 	/**
 	 * @param carteJoueurs
 	 * @param i de 0 a 2
