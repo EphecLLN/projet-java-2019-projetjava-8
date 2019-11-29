@@ -52,6 +52,9 @@ public class Deck{
  	 compteurCarte = 0;   // Reset current card to deal
     }
 
+	public String getPremiereCarte() {
+		return paquetCarte[0].toString();
+	}
 
 	/**
 	 * @return the paquet

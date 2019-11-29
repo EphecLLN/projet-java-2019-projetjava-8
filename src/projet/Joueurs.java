@@ -3,32 +3,30 @@
  */
 package projet;
 
+import java.util.ArrayList;
+
 /**
  * @author Jean Cornil
  *
  */
 public class Joueurs {
-	private int nbrCartes;
-	private int id;
 	
-	private String[] cartesCachees= {
-			"","",""
-		};
-	private String[] cartesVisibles= {
-			"","",""
-		};
-	private String[] cartesMain= {
-			"","",""
-		};
+	private ArrayList<String> cartesCachees= new ArrayList();
+	private ArrayList<String> cartesVisibles;
+	private ArrayList<String> cartesMain;
+	
 	
 	public Joueurs(){
-		id = 0;
-		nbrCartes = 0;
+		//ArrayList<String>carteCachees = new ArrayList();
+		ArrayList<String> cartesVisibles= new ArrayList();;
+		ArrayList<String> cartesMain= new ArrayList();;
 	}
-	
-	public Joueurs(int id, int nbrCartes){
-		this.id = id;
-		this.nbrCartes = nbrCartes;
+	/**
+	 * @Override
+	 */
+	public String toString() {
+		return "Joueurs [cartesCachees=" + cartesCachees + ", cartesVisibles=" + cartesVisibles + ", cartesMain="
+				+ cartesMain + "]";
 	}
 	
 	/**
@@ -37,7 +35,7 @@ public class Joueurs {
 	 * i représente la carte a remplacer dans les cartes cachées
 	 * 
 	 */
-	
+	/*
 	public void estCachee(Carte carteJoueurs, int i) {
 		if (i <= 2 && i >= 0) {
 			cartesCachees[i] = carteJoueurs.toString();
@@ -53,7 +51,7 @@ public class Joueurs {
 	 * i représente la carte a remplacer dans les cartes visibles
 	 * 
 	 */
-	
+	/*
 	public void estVisible(Carte carteJoueurs, int i) {
 		if (i <= 2 && i >= 0) {
 			cartesVisibles[i] = carteJoueurs.toString();
@@ -66,6 +64,7 @@ public class Joueurs {
 	 * @param carteJoueurs
 	 * @param i
 	 */
+	/*
 	public void estEnMain(Carte carteJoueurs, int i) {
 		cartesMain[i] = carteJoueurs.toString();
 	}
@@ -73,62 +72,45 @@ public class Joueurs {
 	/**
 	 *  Getters et Setters de la Classe Joueurs  
 	 **/
-	
-	public int getNbrCartes() {
-		return nbrCartes;
-	}
-	
-	public void setNbrCartes(int nbrCartes) {
-		this.nbrCartes = nbrCartes;
-	}
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	/**
 	 * @return the cartesCachees
 	 */
-	public String[] getCartesCachees() {
+	public ArrayList<String> getCartesCachees() {
 		return cartesCachees;
 	}
 
 	/**
 	 * @param cartesCachees the cartesCachees to set
 	 */
-	public void setCartesCachees(String[] cartesCachees) {
+	public void setCartesCachees(ArrayList<String> cartesCachees) {
 		this.cartesCachees = cartesCachees;
 	}
 
 	/**
 	 * @return the cartesVisibles
 	 */
-	public String[] getCartesVisibles() {
+	public ArrayList<String> getCartesVisibles() {
 		return cartesVisibles;
 	}
 
 	/**
 	 * @param cartesVisibles the cartesVisibles to set
 	 */
-	public void setCartesVisibles(String[] cartesVisibles) {
+	public void setCartesVisibles(ArrayList<String> cartesVisibles) {
 		this.cartesVisibles = cartesVisibles;
 	}
 
 	/**
 	 * @return the cartesMain
 	 */
-	public String[] getCartesMain() {
+	public ArrayList<String> getCartesMain() {
 		return cartesMain;
 	}
 
 	/**
 	 * @param cartesMain the cartesMain to set
 	 */
-	public void setCartesMain(String[] cartesMain) {
+	public void setCartesMain(ArrayList<String> cartesMain) {
 		this.cartesMain = cartesMain;
 	}
 
