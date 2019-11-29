@@ -25,10 +25,13 @@ public class Main{
 		Deck paquet =  new Deck();
 		paquet.melange(200);
 		int g = 0;
-		for (int i =0; i<1; i++) {
+		for (int i =0; i<52; i++) {
 			g++;
-			System.out.print(paquet.getPaquet()[i].getCarteValeur());
-			System.out.println(" " + paquet.getPaquet()[i].getCarteCouleur());
+			/*
+			System.out.print(paquet.getPaquetCarte()[i].getCarteValeur());
+			System.out.println(" " + paquet.getPaquetCarte()[i].getCarteCouleur());
+			*/
+			System.out.print(paquet.getPaquetCarte()[i].toString()+ "\n");
 		}
 		System.out.println(g);
 	}

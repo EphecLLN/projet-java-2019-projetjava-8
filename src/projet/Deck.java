@@ -14,16 +14,16 @@ public class Deck{
 
 	public static final int NCARTES = 52; //Nombre de cartes totales dans un deck
 
-	private Carte[] paquet;      //Ensemble des cartes du paquet
+	private Carte[] paquetCarte;      //Ensemble des cartes du paquet
 	private int compteurCarte;   //Carte au dessus du paquet
 
 	public Deck() {
-		paquet = new Carte[NCARTES];
+		paquetCarte = new Carte[NCARTES];
 		int i = 0;
 		
 		for(int couleur = 0; couleur < 4; couleur++) {
 			for(int valeur = 0; valeur < 13; valeur++) {
-				paquet[i++] = new Carte(couleur, valeur);
+				paquetCarte[i++] = new Carte(couleur, valeur);
 			}
 		}
 		compteurCarte = 0;       //Nouveau paquet de carte
@@ -44,9 +44,9 @@ public class Deck{
  	     carte2 = (int) ( NCARTES * Math.random() );  // dans le paquet
   
  	    
- 	     Carte tmp = paquet[carte1];
- 	     paquet[carte1] = paquet[carte2];
- 	     paquet[carte2] = tmp;
+ 	     Carte tmp = paquetCarte[carte1];
+ 	     paquetCarte[carte1] = paquetCarte[carte2];
+ 	     paquetCarte[carte2] = tmp;
  	 }
   
  	 compteurCarte = 0;   // Reset current card to deal
@@ -56,16 +56,16 @@ public class Deck{
 	/**
 	 * @return the paquet
 	 */
-	public Carte[] getPaquet() {
-		return paquet;
+	public Carte[] getPaquetCarte() {
+		return paquetCarte;
 	}
 
 
 	/**
 	 * @param paquet the paquet to set
 	 */
-	public void setPaquet(Carte[] paquet) {
-		this.paquet = paquet;
+	public void setPaquetCarte(Carte[] paquetCarte) {
+		this.paquetCarte = paquetCarte;
 	}
 
 

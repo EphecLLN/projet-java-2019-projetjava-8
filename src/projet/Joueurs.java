@@ -11,21 +11,14 @@ public class Joueurs {
 	private int nbrCartes;
 	private int id;
 	
-	private int[][] cartesCachees= {
-		    {0,0},
-		    {0,0},
-		    {0,0},
+	private String[] cartesCachees= {
+			"","",""
 		};
-	private int[][] cartesVisibles= {
-		    {0,0},
-		    {0,0},
-		    {0,0},
+	private String[] cartesVisibles= {
+			"","",""
 		};
-	private int[][] cartesMain= {
-		    {0,0},
-		    {0,0},
-		    {0,0},
-		    {0,0},
+	private String[] cartesMain= {
+			"","",""
 		};
 	
 	public Joueurs(){
@@ -47,8 +40,7 @@ public class Joueurs {
 	
 	public void estCachee(Carte carteJoueurs, int i) {
 		if (i <= 2 && i >= 0) {
-			cartesCachees[i][0] = carteJoueurs.getCarteCouleur();
-			cartesCachees[i][1] = carteJoueurs.getCarteValeur();
+			cartesCachees[i] = carteJoueurs.toString();
 		}
 		else
 			System.out.println("Position impossible dans les cartes cachées");
@@ -64,8 +56,7 @@ public class Joueurs {
 	
 	public void estVisible(Carte carteJoueurs, int i) {
 		if (i <= 2 && i >= 0) {
-			cartesVisibles[i][0] = carteJoueurs.getCarteCouleur();
-			cartesVisibles[i][1] = carteJoueurs.getCarteValeur();
+			cartesVisibles[i] = carteJoueurs.toString();
 		}
 		else
 			System.out.println("Position impossible dans les cartes visibles");
@@ -76,47 +67,9 @@ public class Joueurs {
 	 * @param i
 	 */
 	public void estEnMain(Carte carteJoueurs, int i) {
-		cartesMain[i][0] = carteJoueurs.getCarteCouleur();
-		cartesMain[i][1] = carteJoueurs.getCarteValeur();
+		cartesMain[i] = carteJoueurs.toString();
 	}
 	
-	/**
-	 * Cree une copie de la carte remplacee en position 4 de la main ( valeur temporaire)
-	 * @param etat
-	 * @param i représente la carte a remonter en main
-	 */
-	
-	public void retourneMain(String etat,int i) {
-		switch(etat) {
-		case "visible":
-			cartesMain[3][0] = cartesVisibles[i][0];
-			cartesMain[3][1] = cartesVisibles[i][1];
-		case "main":
-			cartesMain[3][0] = cartesMain[i][0];
-			cartesMain[3][1] = cartesMain[i][1];
-		}
-	}
-	
-	/**
-	 * Echange un carte de la main avec une des cartes visibles
-	 * @param carteJoueur
-	 * @param idCarte id en main
-	 * @param etat "cachee" ou "visible"
-	 * @param carteRemplacee id de la carte a remplacer
-	 */
-	
-	public void echange(Carte carteJoueur, int idCarte, String etat,int carteRemplacee) {
-		retourneMain(etat,carteRemplacee);
-		switch(etat) {
-		case "visible":
-			estVisible(carteJoueur,carteRemplacee);
-		case "main":
-			estEnMain(carteJoueur,carteRemplacee);
-		case "cachee":
-			System.out.println("on ne peut pas echanger ses cartes avec les cartes cachees");		
-		}
-		cartesMain[idCarte][0] = cartesMain[3][0];
-	}
 	/**
 	 *  Getters et Setters de la Classe Joueurs  
 	 **/
@@ -137,27 +90,47 @@ public class Joueurs {
 		this.id = id;
 	}
 
-	public int[][] getCartesCachees() {
+	/**
+	 * @return the cartesCachees
+	 */
+	public String[] getCartesCachees() {
 		return cartesCachees;
 	}
 
-	public void setCartesCachees(int[][] cartesCachees) {
+	/**
+	 * @param cartesCachees the cartesCachees to set
+	 */
+	public void setCartesCachees(String[] cartesCachees) {
 		this.cartesCachees = cartesCachees;
 	}
 
-	public int[][] getCartesVisibles() {
+	/**
+	 * @return the cartesVisibles
+	 */
+	public String[] getCartesVisibles() {
 		return cartesVisibles;
 	}
 
-	public void setCartesVisibles(int[][] cartesVisibles) {
+	/**
+	 * @param cartesVisibles the cartesVisibles to set
+	 */
+	public void setCartesVisibles(String[] cartesVisibles) {
 		this.cartesVisibles = cartesVisibles;
 	}
 
-	public int[][] getCartesMain() {
+	/**
+	 * @return the cartesMain
+	 */
+	public String[] getCartesMain() {
 		return cartesMain;
 	}
 
-	public void setCartesMain(int[][] cartesMain) {
+	/**
+	 * @param cartesMain the cartesMain to set
+	 */
+	public void setCartesMain(String[] cartesMain) {
 		this.cartesMain = cartesMain;
 	}
+
+
 }
