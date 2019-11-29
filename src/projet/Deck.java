@@ -18,7 +18,6 @@ public class Deck{
 	private int compteurCarte;   //Carte au dessus du paquet
 
 	public Deck() {
-		
 		paquet = new Carte[NCARTES];
 		int i = 0;
 		
