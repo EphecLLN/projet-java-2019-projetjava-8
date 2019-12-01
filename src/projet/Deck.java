@@ -16,11 +16,13 @@ public class Deck{
 
 	public static final int NCARTES = 52; //Nombre de cartes totales dans un deck
 
-	private Carte paquetCarte;      //Ensemble des cartes du paquet
+	private Carte[] paquetCarte;      //Ensemble des cartes du paquet
+	public static ArrayList<Carte> paquetCarteMelange;
 	private int compteurCarte;   //Carte au dessus du paquet
 
 	public Deck() {
 		paquetCarte = new Carte[NCARTES];
+		paquetCarteMelange = new ArrayList<Carte>();
 		int i = 0;
 		
 		for(int couleur = 0; couleur < 4; couleur++) {
@@ -51,12 +53,21 @@ public class Deck{
  	     paquetCarte[carte2] = tmp;
  	 }
   
- 	 compteurCarte = 0;   // Reset le paquet de carte mélangé à 52 cartes
+ 	 compteurCarte = 0;   // Reset current card to deal
     }
+	
+	void tabToArray() {
+		for (int i = 0; i< this.paquetCarte.length; i++) {
+			paquetCarteMelange.add(paquetCarte[i]);
+		}
+		System.out.println("size : " + paquetCarteMelange.size());
+	}
 
 	public String getPremiereCarte() {
-		return paquetCarte[0].toString();
-		
+		String premiere = paquetCarteMelange.get(0).toString();
+		paquetCarteMelange.remove(0);
+		compteurCarte ++;
+		return premiere;
 	}
 
 	/**

@@ -17,9 +17,10 @@ public class Joueurs {
 	
 	
 	public Joueurs(){
-		this.cartesCachees = new ArrayList<String>();
+		//ArrayList<String>carteCachees = new ArrayList();
 		this.cartesVisibles = new ArrayList<String>();
-		this.cartesMain= new ArrayList<String>();
+		this.cartesMain = new ArrayList<String>();
+		this.cartesCachees = new ArrayList<String>();
 	}
 	/**
 	 * @Override
@@ -113,6 +114,4 @@ public class Joueurs {
 	public void setCartesMain(ArrayList<String> cartesMain) {
 		this.cartesMain = cartesMain;
 	}
-
-
 }
