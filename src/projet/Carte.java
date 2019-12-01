@@ -12,9 +12,9 @@ public class Carte{
 
 	private static final String[] couleur = { "Carreau", "Coeur", "Trèfle", "Pique"};
 	private static final String[] valeur = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Valet", "Dame", "Roi", "As"};
-	protected  boolean estJouee = false;
-	protected  boolean estCoupee = false;
-	protected  boolean estDansPioche = true;
+	protected boolean estJouee = false;
+	protected boolean estCoupee = false;
+	protected boolean estDansPioche = true;
 
 	private byte carteCouleur;
 	private byte carteValeur;

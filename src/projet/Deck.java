@@ -3,6 +3,8 @@
  */
 package projet;
 
+import java.util.ArrayList;
+
 /**
  * La classe Deck represente le paquet de carte à jouer. 
  * Il est composé de 52 cartes et peut être mélangé.
@@ -14,7 +16,7 @@ public class Deck{
 
 	public static final int NCARTES = 52; //Nombre de cartes totales dans un deck
 
-	private Carte[] paquetCarte;      //Ensemble des cartes du paquet
+	private Carte paquetCarte;      //Ensemble des cartes du paquet
 	private int compteurCarte;   //Carte au dessus du paquet
 
 	public Deck() {
@@ -49,11 +51,12 @@ public class Deck{
  	     paquetCarte[carte2] = tmp;
  	 }
   
- 	 compteurCarte = 0;   // Reset current card to deal
+ 	 compteurCarte = 0;   // Reset le paquet de carte mélangé à 52 cartes
     }
 
 	public String getPremiereCarte() {
 		return paquetCarte[0].toString();
+		
 	}
 
 	/**
