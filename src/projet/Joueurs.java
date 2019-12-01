@@ -11,15 +11,16 @@ import java.util.ArrayList;
  */
 public class Joueurs {
 	
-	private ArrayList<String> cartesCachees= new ArrayList();
+	private ArrayList<String> cartesCachees;
 	private ArrayList<String> cartesVisibles;
 	private ArrayList<String> cartesMain;
 	
 	
 	public Joueurs(){
 		//ArrayList<String>carteCachees = new ArrayList();
-		ArrayList<String> cartesVisibles= new ArrayList();;
-		ArrayList<String> cartesMain= new ArrayList();;
+		this.cartesVisibles = new ArrayList<String>();
+		this.cartesMain = new ArrayList<String>();
+		this.cartesCachees = new ArrayList<String>();
 	}
 	/**
 	 * @Override
@@ -113,6 +114,4 @@ public class Joueurs {
 	public void setCartesMain(ArrayList<String> cartesMain) {
 		this.cartesMain = cartesMain;
 	}
-
-
 }
