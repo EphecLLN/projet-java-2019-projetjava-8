@@ -90,9 +90,11 @@ public class Jeu {
 		for (int j = 0; j < nbJoueurs; j++) {
 			for( int i = 0; i < 3; i++) {
 				System.out.println("joueur " + j + " cache " + i + " : " + joueur[j].getCartesCachees().get(i));
-	
+			}
+			for( int i = 0; i < 3; i++) {
 				System.out.println("joueur " + j + " visible " + i + " : " + joueur[j].getCartesVisibles().get(i));
-	
+			}
+			for( int i = 0; i < 3; i++) {
 				System.out.println("joueur " + j + " main " + i + " : " + joueur[j].getCartesMain().get(i));
 			}
 		}	
