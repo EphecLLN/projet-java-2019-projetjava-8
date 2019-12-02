@@ -3,6 +3,7 @@
  */
 package projet;
 import java.util.ArrayList;
+import java.util.Scanner;
 /**
  * @author Simon
  *
@@ -86,7 +87,7 @@ public class Jeu {
 		distribuerCarte("main");		
 		// chaque joueur a ses 3 arrays cache, visible et main rempli.
 		
-		
+		/*
 		for (int j = 0; j < nbJoueurs; j++) {
 			for( int i = 0; i < 3; i++) {
 				System.out.println("joueur " + j + " cache " + i + " : " + joueur[j].getCartesCachees().get(i));
@@ -98,9 +99,14 @@ public class Jeu {
 				System.out.println("joueur " + j + " main " + i + " : " + joueur[j].getCartesMain().get(i));
 			}
 		}	
+		*/
 		
-		System.out.println(Deck.paquetCarteMelange.size());
+		//System.out.println(Deck.getPaquetCarteMelange().size());
 		
+		for (int i =0; i < nbJoueurs; i++) {
+			System.out.println("joueur " + i+ "\n" + joueur[i].demanderCarteAJouer());	
+			joueur[i].choisirCarte();
+			System.out.println(joueur[i].jouerCarte(joueur[i].getCarte()));
+		}
 	}
-	
 }

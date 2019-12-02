@@ -4,6 +4,7 @@
 package projet;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * @author Jean Cornil
@@ -14,6 +15,7 @@ public class Joueurs {
 	private ArrayList<String> cartesCachees;
 	private ArrayList<String> cartesVisibles;
 	private ArrayList<String> cartesMain;
+	private String carte;
 	
 	
 	public Joueurs(){
@@ -22,6 +24,39 @@ public class Joueurs {
 		this.cartesMain = new ArrayList<String>();
 		this.cartesCachees = new ArrayList<String>();
 	}
+	
+	public String demanderCarteAJouer() {
+		String str = "";
+		str += "Quelle Carte voulez vous jouer?; \n";
+		str += "Taper 1 pour: " + cartesMain.get(0) +"\n";
+		str += "Taper 2 pour: " + cartesMain.get(1) +"\n";
+		str += "Taper 3 pour: " + cartesMain.get(2) +"\n";
+		return str;
+	}
+	public String choisirCarte() {
+		Scanner sc = new Scanner(System.in);
+		carte = sc.nextLine();
+		return carte;
+	}
+	
+	
+	public String jouerCarte(String carte) {
+		String str ="";
+		switch(carte) {
+			case "1":
+				str = "Vous jouer la carte " + cartesMain.get(0);
+				break;
+			case "2":
+				str = "Vous jouer la carte " + cartesMain.get(1);
+				break;
+			case "3":
+				str = "Vous jouer la carte " + cartesMain.get(2);
+				break;
+			default:
+				System.out.println( "mauvaise sélection !");
+		}
+		return str + "\n";
+	}
 	/**
 	 * @Override
 	 */
@@ -29,47 +64,7 @@ public class Joueurs {
 		return "Joueurs [cartesCachees=" + cartesCachees + ", cartesVisibles=" + cartesVisibles + ", cartesMain="
 				+ cartesMain + "]";
 	}
-	
-	/**
-	 * @param carteJoueurs
-	 * @param i de 0 a 2
-	 * i représente la carte a remplacer dans les cartes cachées
-	 * 
-	 */
-	/*
-	public void estCachee(Carte carteJoueurs, int i) {
-		if (i <= 2 && i >= 0) {
-			cartesCachees[i] = carteJoueurs.toString();
-		}
-		else
-			System.out.println("Position impossible dans les cartes cachées");
-	}
-	
-	/**
-	 * 
-	 * @param carteJoueurs
-	 * @param i de 0 a 2
-	 * i représente la carte a remplacer dans les cartes visibles
-	 * 
-	 */
-	/*
-	public void estVisible(Carte carteJoueurs, int i) {
-		if (i <= 2 && i >= 0) {
-			cartesVisibles[i] = carteJoueurs.toString();
-		}
-		else
-			System.out.println("Position impossible dans les cartes visibles");
-	}
-	/**
-	 * 
-	 * @param carteJoueurs
-	 * @param i
-	 */
-	/*
-	public void estEnMain(Carte carteJoueurs, int i) {
-		cartesMain[i] = carteJoueurs.toString();
-	}
-	
+		
 	/**
 	 *  Getters et Setters de la Classe Joueurs  
 	 **/
@@ -114,4 +109,18 @@ public class Joueurs {
 	public void setCartesMain(ArrayList<String> cartesMain) {
 		this.cartesMain = cartesMain;
 	}
+	/**
+	 * @return the carte
+	 */
+	public String getCarte() {
+		return carte;
+	}
+
+	/**
+	 * @param carte the carte to set
+	 */
+	public void setCarte(String carte) {
+		this.carte = carte;
+	}
+
 }

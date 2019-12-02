@@ -63,6 +63,38 @@ public class Deck{
 		System.out.println("size : " + paquetCarteMelange.size());
 	}
 
+	/**
+	 * @return the paquetCarteMelange
+	 */
+	public static ArrayList<Carte> getPaquetCarteMelange() {
+		return paquetCarteMelange;
+	}
+
+
+	/**
+	 * @param paquetCarteMelange the paquetCarteMelange to set
+	 */
+	public static void setPaquetCarteMelange(ArrayList<Carte> paquetCarteMelange) {
+		Deck.paquetCarteMelange = paquetCarteMelange;
+	}
+
+
+	/**
+	 * @return the compteurCarte
+	 */
+	public int getCompteurCarte() {
+		return compteurCarte;
+	}
+
+
+	/**
+	 * @param compteurCarte the compteurCarte to set
+	 */
+	public void setCompteurCarte(int compteurCarte) {
+		this.compteurCarte = compteurCarte;
+	}
+
+
 	public String getPremiereCarte() {
 		String premiere = paquetCarteMelange.get(0).toString();
 		paquetCarteMelange.remove(0);
