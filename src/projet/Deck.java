@@ -62,6 +62,10 @@ public class Deck{
 		}
 		System.out.println("size : " + paquetCarteMelange.size());
 	}
+	public void removeCarte() {
+		paquetCarteMelange.remove(0);
+		compteurCarte ++;
+	}
 
 	/**
 	 * @return the paquetCarteMelange
@@ -97,8 +101,7 @@ public class Deck{
 
 	public String getPremiereCarte() {
 		String premiere = paquetCarteMelange.get(0).toString();
-		paquetCarteMelange.remove(0);
-		compteurCarte ++;
+		removeCarte();
 		return premiere;
 	}
 
