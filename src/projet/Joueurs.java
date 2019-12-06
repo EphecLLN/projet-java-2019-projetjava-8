@@ -15,8 +15,7 @@ public class Joueurs {
 	private ArrayList<String> cartesCachees;
 	private ArrayList<String> cartesVisibles;
 	private ArrayList<String> cartesMain;
-	private String carte;
-	
+	private int carte;
 	
 	public Joueurs(){
 		//ArrayList<String>carteCachees = new ArrayList();
@@ -32,18 +31,20 @@ public class Joueurs {
 	public String demanderCarteAJouer() {
 		String str = "";
 		str += "Quelle Carte voulez vous jouer?; \n";
-		str += "Taper 1 pour: " + cartesMain.get(0) +"\n";
-		str += "Taper 2 pour: " + cartesMain.get(1) +"\n";
-		str += "Taper 3 pour: " + cartesMain.get(2) +"\n";
-		return str;
+	for (int i = 0; i < getCartesMain().size(); i++) {
+		int j = i +1;
+		str += "Taper " + j +" pour: " + cartesMain.get(i) +"\n";	
+		}
+	System.out.println(str);
+	return str;
 	}
 	/**
 	 * Cette méthode permet à l'utilisateur de sélectionner la cartes qu'il veut jouer
 	 * @return la carte à jouer
 	 */
-	public String choisirCarte() {
+	public int choisirCarte() {
 		Scanner sc = new Scanner(System.in);
-		carte = sc.nextLine();
+		carte = sc.nextInt();
 		return carte;
 	}
 	
@@ -52,34 +53,29 @@ public class Joueurs {
 	 * @param carte que l'on joue
 	 * @return message annoncant la carte jouee et la carte piochee
 	 */
-	public String jouerCarte(String carte) {
+	public String jouerCarte(int carte) {
 		String str ="";
-		switch(carte) {
-			case "1":
-				str = "Vous jouer la carte " + cartesMain.get(0);
-				cartesMain.remove(0);
-				
-				ArrayList<String> k;
-				k = getCartesMain();
-				String premiereCarte = Jeu.donnerCarte();
-				k.add(premiereCarte);
-				setCartesMain(k);
-				
-				str += "\nVous piocher la carte "+ premiereCarte;
-				// Pour vérifier qu'on a bien une nouvelle carte
-				//System.out.println("Test changement de carte\n" + getCartesMain().toString());
-				break;
-			case "2":
-				str = "Vous jouer la carte " + cartesMain.get(1);
-				break;
-			case "3":
-				str = "Vous jouer la carte " + cartesMain.get(2);
-				break;
-			default:
-				System.out.println( "mauvaise sélection !");
-		}
-		return str + "\n";
+		String premiereCarte;
+		ArrayList<String> m;
+		ArrayList<String> k;
+		//int carteMoinsUn = carte -1;
+		
+		str = "Vous jouer la carte " + cartesMain.get(carte);
+		m = Jeu.getCartesJouees();
+		m.add(getCartesMain().get(carte));
+		Jeu.setCartesJouees(m);
+		 
+		k = getCartesMain();
+		premiereCarte = Jeu.donnerCarte();
+		k.add(premiereCarte);
+		setCartesMain(k);
+		cartesMain.remove(carte);
+		str += "\nVous piocher la carte "+ premiereCarte;
+		
+		System.out.println(str);
+		return str;
 	}
+
 	/**
 	 * @Override
 	 */
@@ -135,15 +131,14 @@ public class Joueurs {
 	/**
 	 * @return the carte
 	 */
-	public String getCarte() {
+	public int getCarte() {
 		return carte;
 	}
 
 	/**
 	 * @param carte the carte to set
 	 */
-	public void setCarte(String carte) {
+	public void setCarte(int carte) {
 		this.carte = carte;
 	}
-
 }

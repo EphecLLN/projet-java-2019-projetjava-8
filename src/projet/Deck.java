@@ -60,7 +60,6 @@ public class Deck{
 		for (int i = 0; i< this.paquetCarte.length; i++) {
 			paquetCarteMelange.add(paquetCarte[i]);
 		}
-		System.out.println("size : " + paquetCarteMelange.size());
 	}
 	public void removeCarte() {
 		paquetCarteMelange.remove(0);
