@@ -4,7 +4,6 @@
 
 les contributeurs de ce projet sont :
 
-- CORNIL Jean
 - MAGNES Simon
 - MEYERS Humbert
 
