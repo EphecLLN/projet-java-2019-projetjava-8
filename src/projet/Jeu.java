@@ -16,8 +16,11 @@ public class Jeu {
     private static int nombreDeCartes = 3;
     private Carte[] carteCoupee;
     private static Joueurs joueur[];
+    private static ArrayList<String> cartesJouees;
     
-    /**
+   
+
+	/**
      * 
      */
     public Jeu() {
@@ -27,21 +30,15 @@ public class Jeu {
         joueur = new Joueurs[nbJoueurs];
         for (int i = 0; i< nbJoueurs; i++) {
         	joueur[i] = new Joueurs();
-        }
-       // nbJoueurs = joueur.length;   
+        }   
+        cartesJouees = new ArrayList<String>();
     }
-	/**
-	 * @return the premiereCarte
-	 */
-	
-
+    
 	/**
 	 * Méthode qui prend la première carte du paquet et la supprime de celui-ci
 	 */
 	public static String donnerCarte() {
-		//paquetDeck.melange(200);
 		return paquetDeck.getPremiereCarte();
-		
 	}
 	
 	/**
@@ -77,36 +74,40 @@ public class Jeu {
 		}
 	}
 	
+	 /**
+	 * @return the cartesJouees
+	 */
+	public static ArrayList<String> getCartesJouees() {
+		return cartesJouees;
+	}
+
+	/**
+	 * @param cartesJouees the cartesJouees to set
+	 */
+	public static void setCartesJouees(ArrayList<String> cartesJouees) {
+		cartesJouees = cartesJouees;
+	}
 	/**
 	 * 
 	 */
 	public static void main(String[] args) {
-		Jeu game = new Jeu();
+		final Jeu game = new Jeu();
 		distribuerCarte("cache");
 		distribuerCarte("visible");
 		distribuerCarte("main");		
 		// chaque joueur a ses 3 arrays cache, visible et main rempli.
 		
-		/*
-		for (int j = 0; j < nbJoueurs; j++) {
-			for( int i = 0; i < 3; i++) {
-				System.out.println("joueur " + j + " cache " + i + " : " + joueur[j].getCartesCachees().get(i));
+		class deposerCarte implements Runnable{
+			public void run() {
+				for(int i = 0; i <nbJoueurs ; i++) {
+					System.out.println(" Joueur: " + i);
+					joueur[i].demanderCarteAJouer();
+					joueur[i].choisirCarte();
+					joueur[i].jouerCarte(joueur[i].getCarte());
+				}
 			}
-			for( int i = 0; i < 3; i++) {
-				System.out.println("joueur " + j + " visible " + i + " : " + joueur[j].getCartesVisibles().get(i));
-			}
-			for( int i = 0; i < 3; i++) {
-				System.out.println("joueur " + j + " main " + i + " : " + joueur[j].getCartesMain().get(i));
-			}
-		}	
-		*/
-		
-		//System.out.println(Deck.getPaquetCarteMelange().size());
-		
-		for (int i =0; i < nbJoueurs; i++) {
-			System.out.println("joueur " + i+ "\n" + joueur[i].demanderCarteAJouer());	
-			joueur[i].choisirCarte();
-			System.out.println(joueur[i].jouerCarte(joueur[i].getCarte()));
 		}
+		new Thread (new deposerCarte()).start();
 	}
+	
 }
