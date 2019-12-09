@@ -14,8 +14,8 @@ public class Joueurs {
 	
 	private ArrayList<String> cartesCachees;
 	private ArrayList<String> cartesVisibles;
-	private ArrayList<String> cartesMain;
-	private int carte;
+	private  ArrayList<String> cartesMain;
+	private static int carte;
 	
 	public Joueurs(){
 		//ArrayList<String>carteCachees = new ArrayList();
@@ -55,11 +55,7 @@ public class Joueurs {
 	 * Cette méthode pose la carte choisie sur la table, la suprimme de notre main et en pioche une nouvelle
 	 * @param carte que l'on joue
 	 */
-	public void jouerCarte(int carte) {
-		String str ="";
-		String premiereCarte;
-		ArrayList<String> m;
-		ArrayList<String> k;
+	public void verifierCarte(int carte) {
 		int carteMoinsUn = carte -1;
 		int valeur;
 		int valeurDerniereCartePosee = Jeu.getValeurDerniereCartePosee();
@@ -68,33 +64,17 @@ public class Joueurs {
 			System.out.println("Vous passez votre tour, dommage!");
 			Jeu.setValeurDerniereCartePosee(Jeu.getCartesJouees().size() -1);
 		}else {
+	
 			valeur = Jeu.donnerValeur(cartesMain.get(carteMoinsUn));	
 			/**
 			 * Condition qui vérifie que l'on a le droit de jouer la carte
 			 */
-			if(valeur >= valeurDerniereCartePosee || valeur == 10 || valeur == 2 || valeur ==3) {
-				str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
-				m = Jeu.getCartesJouees();
-				m.add(getCartesMain().get(carteMoinsUn));
-				Jeu.setCartesJouees(m);
-				 
-				k = getCartesMain();
-				premiereCarte = Jeu.donnerCarte();
-				k.add(premiereCarte);
-				setCartesMain(k);
-				cartesMain.remove(carteMoinsUn);
-				str += "\nVous piocher la carte "+ premiereCarte;
-				
-				System.out.println(str);
-				System.out.println("-----");
-				
-				if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){
-					Jeu.setValeurDerniereCartePosee(0);
-				}else {
-					Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
-				}
-				Carte.estSpecial(valeur);
-			}else if(valeur < valeurDerniereCartePosee) {
+			if(valeurDerniereCartePosee == 7 && valeur <= valeurDerniereCartePosee ){
+				jouerCartes(valeur);
+				System.out.println(valeur);
+			}else if( valeur >= valeurDerniereCartePosee || valeur == 10 || valeur == 2 || valeur ==3) {
+				jouerCartes(valeur);
+			}else{
 				System.out.println("Vous ne pouvez pas jouer cette carte !");
 				System.out.println("Pas de bol, vous recuperer le paquet !");
 				recupererCartesJouees();
@@ -104,6 +84,39 @@ public class Joueurs {
 		
 		//System.out.println("carte jouee: " + Jeu.getCartesJouees() );
 		// Cette ligne sert a recuperer La valeur de la denière carte qui a ete jouee
+	}
+	
+	public  void jouerCartes(int carte) {
+		String str ="";
+		String premiereCarte;
+		ArrayList<String> m;
+		ArrayList<String> k;
+		int carteMoinsUn = getCarte()-1;
+		int valeur = carte;
+		int valeurDerniereCartePosee = Jeu.getValeurDerniereCartePosee();
+		
+		str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
+		m = Jeu.getCartesJouees();
+		m.add(getCartesMain().get(carteMoinsUn));
+		Jeu.setCartesJouees(m);
+		 
+		k = getCartesMain();
+		premiereCarte = Jeu.donnerCarte();
+		k.add(premiereCarte);
+		setCartesMain(k);
+		cartesMain.remove(carteMoinsUn);
+		str += "\nVous piocher la carte "+ premiereCarte;
+		
+		System.out.println(str);
+		
+		if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){
+			Jeu.setValeurDerniereCartePosee(0);
+		}else if(valeur == 3) {
+			Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
+		}else {
+			Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
+		}
+		Carte.estSpecial(valeur);
 	}
 	/**
 	 * Cette méthode va recuperer un int qui sera la valeur de la carte
@@ -124,10 +137,7 @@ public class Joueurs {
 			}
 		}
 	}
-	public static void copierCarte(int valDerCarte) {
-		Jeu.setValeurDerniereCartePosee(valDerCarte);
-		System.out.println("La carte est copiee");
-	}
+	
 	
 	/**
 	 * @Override
