@@ -63,6 +63,9 @@ public class Joueurs {
 		ArrayList<String> k;
 		int carteMoinsUn = carte -1;
 		
+		String valeur;
+		valeur = cartesMain.get(carteMoinsUn);
+		
 		str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
 		m = Jeu.getCartesJouees();
 		m.add(getCartesMain().get(carteMoinsUn));
@@ -76,6 +79,8 @@ public class Joueurs {
 		str += "\nVous piocher la carte "+ premiereCarte;
 		
 		System.out.println(str);
+		System.out.println("-----");
+		Carte.estSpecial(valeur);
 		
 		return str;
 	}

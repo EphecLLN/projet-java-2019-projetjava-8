@@ -129,6 +129,7 @@ public class Jeu {
 			}
 		}
 		new Thread (new deposerCarte()).start();
+		
 	}
 	
 }
