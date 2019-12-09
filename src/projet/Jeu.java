@@ -14,8 +14,8 @@ public class Jeu {
 	static int nbJoueurs = 3;
     private static int valeurDerniereCartePosee = 0;
     private static int nombreDeCartes = 3;
-    private Carte[] carteCoupee;
-    private static Joueurs joueur[];
+    private static ArrayList<String> cartesCoupees;
+	private static Joueurs joueur[];
     private static ArrayList<String> cartesJouees;
 
 	/**
@@ -30,6 +30,8 @@ public class Jeu {
         	joueur[i] = new Joueurs();
         }   
         cartesJouees = new ArrayList<String>();
+        cartesCoupees = new ArrayList<String>();
+        
         String derniereCartePosee = "";
     }
 	/**
@@ -74,7 +76,20 @@ public class Jeu {
 			}	
 		}
 	}
-	
+	/**
+	 * Cette methode permet de couper le jeu
+	 */
+	public static void couperCartes() {
+		while(Jeu.getCartesJouees().size() > 0) {
+			ArrayList<String> a;
+			a = Jeu.getCartesJouees();
+			Jeu.getCartesCoupees().addAll(a);
+			for (int i =0; i<getCartesJouees().size(); i +=0) {
+				getCartesJouees().remove(i);
+			}
+			System.out.println("Le jeu a ete coupe !");
+		}
+	}
 	 /**
 	 * @return the cartesJouees
 	 */
@@ -113,7 +128,19 @@ public class Jeu {
 	public static void setValeurDerniereCartePosee(int valeurDerniereCartePosee) {
 		Jeu.valeurDerniereCartePosee = valeurDerniereCartePosee;
 	}
-	
+	/**
+	 * @return the cartesCoupees
+	 */
+	public static ArrayList<String> getCartesCoupees() {
+		return cartesCoupees;
+	}
+	/**
+	 * @param cartesCoupees the cartesCoupees to set
+	 */
+	public void setCartesCoupees(ArrayList<String> cartesCoupees) {
+		this.cartesCoupees = cartesCoupees;
+	}
+
 	
 	
 	public static void main(String[] args) {

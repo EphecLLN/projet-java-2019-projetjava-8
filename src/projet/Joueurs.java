@@ -63,10 +63,12 @@ public class Joueurs {
 		int carteMoinsUn = carte -1;
 		int valeur;
 		int valeurDerniereCartePosee = Jeu.getValeurDerniereCartePosee();
-		
-		
+
 		valeur = donnerValeur(cartesMain.get(carteMoinsUn));	
-		if(valeur >= valeurDerniereCartePosee) {
+		/**
+		 * Condition qui vérifie que l'on a le droit de jouer la carte
+		 */
+		if(valeur >= valeurDerniereCartePosee || valeur == 10 || valeur == 2) {
 			str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
 			m = Jeu.getCartesJouees();
 			m.add(getCartesMain().get(carteMoinsUn));
@@ -82,11 +84,26 @@ public class Joueurs {
 			System.out.println(str);
 			System.out.println("-----");
 			Carte.estSpecial(valeur);
+			if(Jeu.getCartesJouees().size() != 0){
+			Jeu.setValeurDerniereCartePosee(donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
+			}else {
+				Jeu.setValeurDerniereCartePosee(0);
+			}
 		}else if(valeur < valeurDerniereCartePosee) {
-			System.out.println("Vous ne pouvez pas jouer cette carte ! \n\n");
+			System.out.println("Vous ne pouvez pas jouer cette carte !");
+			System.out.println("Pas de bol, vous recuperer le paquet !");
+			recupererCartesJouees();
+			Jeu.setValeurDerniereCartePosee(0);
 		}
-		Jeu.setValeurDerniereCartePosee(donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
+		
+		//System.out.println("carte jouee: " + Jeu.getCartesJouees() );
+		// Cette ligne sert a recuperer La valeur de la denière carte qui a ete jouee
 	}
+	/**
+	 * Cette méthode va recuperer un int qui sera la valeur de la carte
+	 * @param carte (valeur + couleur) en un string
+	 * @return la valeur de la carte
+	 */
 	public int donnerValeur(String carte) {
 		int valeur = 0;
 		if(carte.indexOf('2') != -1) {
@@ -118,6 +135,20 @@ public class Joueurs {
 		}
 		return valeur;
 	}
+	/**
+	 * Cette methode permet de reprendre tout le tas de cartes jouee losqu'un joueur ne sait plus poser de cartes
+	 */
+	public void recupererCartesJouees() {
+		while (Jeu.getCartesJouees().size() > 0) {
+			ArrayList<String> a;
+			a = Jeu.getCartesJouees();
+			getCartesMain().addAll(a);
+			for (int i =0; i<Jeu.getCartesJouees().size(); i++) {
+				Jeu.getCartesJouees().remove(i);
+			}
+		}
+	}
+	
 	/**
 	 * @Override
 	 */
