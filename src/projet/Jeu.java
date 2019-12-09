@@ -11,14 +11,12 @@ import java.util.Scanner;
 
 public class Jeu {
     private static Deck paquetDeck = new Deck();
-    static int nbJoueurs = 3;
+	static int nbJoueurs = 3;
     private Carte[] derniereCartePosee;
     private static int nombreDeCartes = 3;
     private Carte[] carteCoupee;
     private static Joueurs joueur[];
     private static ArrayList<String> cartesJouees;
-    
-   
 
 	/**
      * 
@@ -38,6 +36,9 @@ public class Jeu {
 	 * Méthode qui prend la première carte du paquet et la supprime de celui-ci
 	 */
 	public static String donnerCarte() {
+		if( Deck.getPaquetCarteMelange().size() == 0) {
+			System.out.println("La pioche est vide !");
+		}
 		return paquetDeck.getPremiereCarte();
 	}
 	
@@ -88,6 +89,19 @@ public class Jeu {
 		cartesJouees = cartesJouees;
 	}
 	/**
+	 * @return the paquetDeck
+	 */
+	public static Deck getPaquetDeck() {
+		return paquetDeck;
+	}
+
+	/**
+	 * @param paquetDeck the paquetDeck to set
+	 */
+	public static void setPaquetDeck(Deck paquetDeck) {
+		Jeu.paquetDeck = paquetDeck;
+	}
+	/**
 	 * 
 	 */
 	public static void main(String[] args) {
@@ -99,15 +113,23 @@ public class Jeu {
 		
 		class deposerCarte implements Runnable{
 			public void run() {
-				for(int i = 0; i <nbJoueurs ; i++) {
-					System.out.println(" Joueur: " + i);
-					joueur[i].demanderCarteAJouer();
-					joueur[i].choisirCarte();
-					joueur[i].jouerCarte(joueur[i].getCarte());
+				int i=0;
+				while(joueur[i].getCartesCachees().size() != 0 
+						&& joueur[i].getCartesVisibles().size() != 0 
+						&& joueur[i].getCartesMain().size() != 0 ) {
+					for( int j = 0; j < 999999; j++) {
+						for( i = 0; i <nbJoueurs ; i++) {
+								System.out.println(" Joueur: " + i );
+								joueur[i].demanderCarteAJouer();
+								joueur[i].choisirCarte();
+								joueur[i].jouerCarte(joueur[i].getCarte());
+						}
+					}
 				}
 			}
 		}
 		new Thread (new deposerCarte()).start();
+		
 	}
 	
 }

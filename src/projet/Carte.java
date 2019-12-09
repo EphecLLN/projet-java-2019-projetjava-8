@@ -24,8 +24,22 @@ public class Carte{
 		carteCouleur = (byte) suit;
 	}
 
-	public  void estSpecial() {
-		switch(this.valeur[ this.carteValeur ]) {
+	public static  void estSpecial(String carte) {
+		String valeur = "";
+		if(carte.indexOf('2') != -1) {
+			valeur = "2";
+		}else if(carte.indexOf('3') != -1) {
+			valeur = "3";
+		}else if(carte.indexOf('7') != -1) {
+			valeur = "7";
+		}else if(carte.indexOf('8') != -1) {
+			valeur = "8";
+		}else if(carte.indexOf("10") != -1) {
+			valeur = "10";
+		}else if(carte.indexOf("As") != -1) {
+			valeur = "As";
+		}
+		switch(valeur ) {
 			case "2" : 
 				System.out.println("Je suis special, Je remet à 0"); 
 				break;
