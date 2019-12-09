@@ -24,8 +24,8 @@ public class Carte{
 		carteCouleur = (byte) suit;
 	}
 
-	public static  void estSpecial(String carte) {
-		String valeur = "";
+	public static  void estSpecial(int valeur) {
+		/*String valeur = "";
 		if(carte.indexOf('2') != -1) {
 			valeur = "2";
 		}else if(carte.indexOf('3') != -1) {
@@ -39,23 +39,24 @@ public class Carte{
 		}else if(carte.indexOf("As") != -1) {
 			valeur = "As";
 		}
+		*/
 		switch(valeur ) {
-			case "2" : 
+			case 2 : 
 				System.out.println("Je suis special, Je remet à 0"); 
 				break;
-			case "3":
+			case 3:
 				System.out.println("Je suis special, je copie la carte précédente"); 
 				break;
-			case "7":
+			case 7:
 				System.out.println("Je suis special, Le suivant doit jouer une carte inférieure à 7"); 
 				break;
-			case "8":
+			case 8:
 				System.out.println("Je suis special, le joueur suivant passe son tour"); 
 				break;
-			case "10":
+			case 10:
 				System.out.println("Je suis special, Je coupe le jeu"); 
 				break;
-			case "As": 
+			case 14: 
 				System.out.println("Je suis special, j' attaque un joueur de mon choix"); 
 				break;
 			default : 

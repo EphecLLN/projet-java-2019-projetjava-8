@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Jeu {
     private static Deck paquetDeck = new Deck();
 	static int nbJoueurs = 3;
-    private Carte[] derniereCartePosee;
+    private static int valeurDerniereCartePosee = 0;
     private static int nombreDeCartes = 3;
     private Carte[] carteCoupee;
     private static Joueurs joueur[];
@@ -30,8 +30,8 @@ public class Jeu {
         	joueur[i] = new Joueurs();
         }   
         cartesJouees = new ArrayList<String>();
+        String derniereCartePosee = "";
     }
-    
 	/**
 	 * Méthode qui prend la première carte du paquet et la supprime de celui-ci
 	 */
@@ -102,8 +102,20 @@ public class Jeu {
 		Jeu.paquetDeck = paquetDeck;
 	}
 	/**
-	 * 
+	 * @return the valeurDerniereCartePosee
 	 */
+	public static int getValeurDerniereCartePosee() {
+		return valeurDerniereCartePosee;
+	}
+	/**
+	 * @param valeurDerniereCartePosee the valeurDerniereCartePosee to set
+	 */
+	public static void setValeurDerniereCartePosee(int valeurDerniereCartePosee) {
+		Jeu.valeurDerniereCartePosee = valeurDerniereCartePosee;
+	}
+	
+	
+	
 	public static void main(String[] args) {
 		final Jeu game = new Jeu();
 		distribuerCarte("cache");
@@ -121,8 +133,10 @@ public class Jeu {
 						for( i = 0; i <nbJoueurs ; i++) {
 								System.out.println(" Joueur: " + i );
 								joueur[i].demanderCarteAJouer();
+								System.out.println("Vous devez jouer une valeur au dessus de : " + valeurDerniereCartePosee);
 								joueur[i].choisirCarte();
 								joueur[i].jouerCarte(joueur[i].getCarte());
+								System.out.println("\n\n");
 						}
 					}
 				}

@@ -54,38 +54,70 @@ public class Joueurs {
 	/**
 	 * Cette méthode pose la carte choisie sur la table, la suprimme de notre main et en pioche une nouvelle
 	 * @param carte que l'on joue
-	 * @return message annoncant la carte jouee et la carte piochee
 	 */
-	public String jouerCarte(int carte) {
+	public void jouerCarte(int carte) {
 		String str ="";
 		String premiereCarte;
 		ArrayList<String> m;
 		ArrayList<String> k;
 		int carteMoinsUn = carte -1;
+		int valeur;
+		int valeurDerniereCartePosee = Jeu.getValeurDerniereCartePosee();
 		
-		String valeur;
-		valeur = cartesMain.get(carteMoinsUn);
 		
-		str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
-		m = Jeu.getCartesJouees();
-		m.add(getCartesMain().get(carteMoinsUn));
-		Jeu.setCartesJouees(m);
-		 
-		k = getCartesMain();
-		premiereCarte = Jeu.donnerCarte();
-		k.add(premiereCarte);
-		setCartesMain(k);
-		cartesMain.remove(carteMoinsUn);
-		str += "\nVous piocher la carte "+ premiereCarte;
-		
-		System.out.println(str);
-		System.out.println("-----");
-		Carte.estSpecial(valeur);
-		
-		return str;
+		valeur = donnerValeur(cartesMain.get(carteMoinsUn));	
+		if(valeur >= valeurDerniereCartePosee) {
+			str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
+			m = Jeu.getCartesJouees();
+			m.add(getCartesMain().get(carteMoinsUn));
+			Jeu.setCartesJouees(m);
+			 
+			k = getCartesMain();
+			premiereCarte = Jeu.donnerCarte();
+			k.add(premiereCarte);
+			setCartesMain(k);
+			cartesMain.remove(carteMoinsUn);
+			str += "\nVous piocher la carte "+ premiereCarte;
+			
+			System.out.println(str);
+			System.out.println("-----");
+			Carte.estSpecial(valeur);
+		}else if(valeur < valeurDerniereCartePosee) {
+			System.out.println("Vous ne pouvez pas jouer cette carte ! \n\n");
+		}
+		Jeu.setValeurDerniereCartePosee(donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
 	}
-	
-	
+	public int donnerValeur(String carte) {
+		int valeur = 0;
+		if(carte.indexOf('2') != -1) {
+			valeur = 2;
+		}else if(carte.indexOf('3') != -1) {
+			valeur = 3;
+		}else if(carte.indexOf('4') != -1) {
+			valeur = 4;
+		}else if(carte.indexOf('5') != -1) {
+			valeur = 5;
+		}else if(carte.indexOf('6') != -1) {
+			valeur = 6;
+		}else if(carte.indexOf('7') != -1) {
+			valeur = 7;
+		}else if(carte.indexOf('8') != -1) {
+			valeur = 8;
+		}else if(carte.indexOf('9') != -1) {
+			valeur = 9;
+		}else if(carte.indexOf("10") != -1) {
+			valeur = 10;
+		}else if(carte.indexOf("Valet") != -1) {
+			valeur = 11;
+		}else if(carte.indexOf("Dame") != -1) {
+			valeur = 12;
+		}else if(carte.indexOf("Roi") != -1) {
+			valeur = 13;
+		}else if(carte.indexOf("As") != -1) {
+			valeur = 14;
+		}
+		return valeur;
+	}
 	/**
 	 * @Override
 	 */
