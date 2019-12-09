@@ -88,7 +88,39 @@ public class Jeu {
 				getCartesJouees().remove(i);
 			}
 			System.out.println("Le jeu a ete coupe !");
+			System.out.println("coupe" + getCartesCoupees());
 		}
+	}
+	public static int donnerValeur(String carte) {
+		int valeur = 0;
+		if(carte.indexOf('2') != -1) {
+			valeur = 2;
+		}else if(carte.indexOf('3') != -1) {
+			valeur = 3;
+		}else if(carte.indexOf('4') != -1) {
+			valeur = 4;
+		}else if(carte.indexOf('5') != -1) {
+			valeur = 5;
+		}else if(carte.indexOf('6') != -1) {
+			valeur = 6;
+		}else if(carte.indexOf('7') != -1) {
+			valeur = 7;
+		}else if(carte.indexOf('8') != -1) {
+			valeur = 8;
+		}else if(carte.indexOf('9') != -1) {
+			valeur = 9;
+		}else if(carte.indexOf("10") != -1) {
+			valeur = 10;
+		}else if(carte.indexOf("Valet") != -1) {
+			valeur = 11;
+		}else if(carte.indexOf("Dame") != -1) {
+			valeur = 12;
+		}else if(carte.indexOf("Roi") != -1) {
+			valeur = 13;
+		}else if(carte.indexOf("As") != -1) {
+			valeur = 14;
+		}
+		return valeur;
 	}
 	 /**
 	 * @return the cartesJouees
