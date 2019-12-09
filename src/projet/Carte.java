@@ -46,6 +46,8 @@ public class Carte{
 				break;
 			case 3:
 				System.out.println("Je suis special, je copie la carte précédente"); 
+				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
+				System.out.println("valderncarte " + Jeu.getValeurDerniereCartePosee());
 				break;
 			case 7:
 				System.out.println("Je suis special, Le suivant doit jouer une carte inférieure à 7"); 
@@ -54,7 +56,8 @@ public class Carte{
 				System.out.println("Je suis special, le joueur suivant passe son tour"); 
 				break;
 			case 10:
-				System.out.println("Je suis special, Je coupe le jeu"); 
+				System.out.println("Je suis special, Je coupe le jeu");
+				Jeu.couperCartes();
 				break;
 			case 14: 
 				System.out.println("Je suis special, j' attaque un joueur de mon choix"); 

@@ -14,8 +14,8 @@ public class Jeu {
 	static int nbJoueurs = 3;
     private static int valeurDerniereCartePosee = 0;
     private static int nombreDeCartes = 3;
-    private Carte[] carteCoupee;
-    private static Joueurs joueur[];
+    private static ArrayList<String> cartesCoupees;
+	private static Joueurs joueur[];
     private static ArrayList<String> cartesJouees;
 
 	/**
@@ -30,6 +30,8 @@ public class Jeu {
         	joueur[i] = new Joueurs();
         }   
         cartesJouees = new ArrayList<String>();
+        cartesCoupees = new ArrayList<String>();
+        
         String derniereCartePosee = "";
     }
 	/**
@@ -74,7 +76,52 @@ public class Jeu {
 			}	
 		}
 	}
-	
+	/**
+	 * Cette methode permet de couper le jeu
+	 */
+	public static void couperCartes() {
+		while(Jeu.getCartesJouees().size() > 0) {
+			ArrayList<String> a;
+			a = Jeu.getCartesJouees();
+			Jeu.getCartesCoupees().addAll(a);
+			for (int i =0; i<getCartesJouees().size(); i +=0) {
+				getCartesJouees().remove(i);
+			}
+			System.out.println("Le jeu a ete coupe !");
+			System.out.println("coupe" + getCartesCoupees());
+		}
+	}
+	public static int donnerValeur(String carte) {
+		int valeur = 0;
+		if(carte.indexOf('2') != -1) {
+			valeur = 2;
+		}else if(carte.indexOf('3') != -1) {
+			valeur = 3;
+		}else if(carte.indexOf('4') != -1) {
+			valeur = 4;
+		}else if(carte.indexOf('5') != -1) {
+			valeur = 5;
+		}else if(carte.indexOf('6') != -1) {
+			valeur = 6;
+		}else if(carte.indexOf('7') != -1) {
+			valeur = 7;
+		}else if(carte.indexOf('8') != -1) {
+			valeur = 8;
+		}else if(carte.indexOf('9') != -1) {
+			valeur = 9;
+		}else if(carte.indexOf("10") != -1) {
+			valeur = 10;
+		}else if(carte.indexOf("Valet") != -1) {
+			valeur = 11;
+		}else if(carte.indexOf("Dame") != -1) {
+			valeur = 12;
+		}else if(carte.indexOf("Roi") != -1) {
+			valeur = 13;
+		}else if(carte.indexOf("As") != -1) {
+			valeur = 14;
+		}
+		return valeur;
+	}
 	 /**
 	 * @return the cartesJouees
 	 */
@@ -113,7 +160,19 @@ public class Jeu {
 	public static void setValeurDerniereCartePosee(int valeurDerniereCartePosee) {
 		Jeu.valeurDerniereCartePosee = valeurDerniereCartePosee;
 	}
-	
+	/**
+	 * @return the cartesCoupees
+	 */
+	public static ArrayList<String> getCartesCoupees() {
+		return cartesCoupees;
+	}
+	/**
+	 * @param cartesCoupees the cartesCoupees to set
+	 */
+	public void setCartesCoupees(ArrayList<String> cartesCoupees) {
+		this.cartesCoupees = cartesCoupees;
+	}
+
 	
 	
 	public static void main(String[] args) {
