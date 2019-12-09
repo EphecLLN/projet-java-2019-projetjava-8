@@ -89,7 +89,11 @@ public class Jeu {
 			}
 			System.out.println("Le jeu a ete coupe !");
 			System.out.println("coupe" + getCartesCoupees());
-		}
+		}	
+	}
+	public static void copierCarte(int valDerCarte) {
+		Jeu.setValeurDerniereCartePosee(valDerCarte);
+		System.out.println("La carte est copiee");
 	}
 	public static int donnerValeur(String carte) {
 		int valeur = 0;
@@ -194,7 +198,7 @@ public class Jeu {
 								joueur[i].demanderCarteAJouer();
 								System.out.println("Vous devez jouer une valeur au dessus de : " + valeurDerniereCartePosee);
 								joueur[i].choisirCarte();
-								joueur[i].jouerCarte(joueur[i].getCarte());
+								joueur[i].verifierCarte(joueur[i].getCarte());
 								System.out.println("\n\n");
 						}
 					}
