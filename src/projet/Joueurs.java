@@ -30,11 +30,14 @@ public class Joueurs {
 	 */
 	public String demanderCarteAJouer() {
 		String str = "";
+		int j = 0;
 		str += "Quelle Carte voulez vous jouer?; \n";
 	for (int i = 0; i < getCartesMain().size(); i++) {
-		int j = i +1;
-		str += "Taper " + j +" pour: " + cartesMain.get(i) +"\n";	
+		j = i +1;
+		str += "Taper " + j +" pour: " + cartesMain.get(i) +"\n";
 		}
+	j++;
+	str += "Taper " + j +" pour piocher une carte";
 	System.out.println(str);
 	return str;
 	}
@@ -58,24 +61,26 @@ public class Joueurs {
 		String premiereCarte;
 		ArrayList<String> m;
 		ArrayList<String> k;
-		//int carteMoinsUn = carte -1;
+		int carteMoinsUn = carte -1;
 		
-		str = "Vous jouer la carte " + cartesMain.get(carte);
+		str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
 		m = Jeu.getCartesJouees();
-		m.add(getCartesMain().get(carte));
+		m.add(getCartesMain().get(carteMoinsUn));
 		Jeu.setCartesJouees(m);
 		 
 		k = getCartesMain();
 		premiereCarte = Jeu.donnerCarte();
 		k.add(premiereCarte);
 		setCartesMain(k);
-		cartesMain.remove(carte);
+		cartesMain.remove(carteMoinsUn);
 		str += "\nVous piocher la carte "+ premiereCarte;
 		
 		System.out.println(str);
+		
 		return str;
 	}
-
+	
+	
 	/**
 	 * @Override
 	 */
