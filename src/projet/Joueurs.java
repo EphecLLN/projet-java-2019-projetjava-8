@@ -153,14 +153,15 @@ public class Joueurs {
 			m = Jeu.getCartesJouees();
 			m.add(getCartesMain().get(carteMoinsUn));
 			Jeu.setCartesJouees(m);
-			 
-			k = getCartesMain();
-			premiereCarte = Jeu.donnerCarte();
-			k.add(premiereCarte);
-			setCartesMain(k);
 			cartesMain.remove(carteMoinsUn);
-			str += "\nVous piocher la carte "+ premiereCarte;
 			
+			if(getCartesMain().size() < 3) {
+				k = getCartesMain();
+				premiereCarte = Jeu.donnerCarte();
+				k.add(premiereCarte);
+				setCartesMain(k);
+				str += "\nVous piocher la carte "+ premiereCarte;
+			}
 			System.out.println(str);
 			
 			if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){

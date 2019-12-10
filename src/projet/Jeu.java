@@ -39,10 +39,13 @@ public class Jeu {
 	 * Méthode qui prend la première carte du paquet et la supprime de celui-ci
 	 */
 	public static String donnerCarte() {
+		String str = null;
 		if( Deck.getPaquetCarteMelange().size() == 0) {
-			System.out.println("La pioche est vide !");
-		}
-		return paquetDeck.getPremiereCarte();
+			System.out.println("Pioche vide");
+		}else {
+			return paquetDeck.getPremiereCarte();
+		}	
+		return str;
 	}
 	
 	/**
@@ -200,7 +203,8 @@ public class Jeu {
 								System.out.println("Vous devez jouer une valeur au dessus de : " + valeurDerniereCartePosee);
 								joueur[i].choisirCarte();
 								joueur[i].verifierCarte(joueur[i].getCarte());
-								System.out.println("\n\n");
+								System.out.println("\n");
+								System.out.println(Deck.getPaquetCarteMelange().size());
 						}
 					}
 				}
