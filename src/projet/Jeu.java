@@ -2,6 +2,7 @@
  * 
  */
 package projet;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 /**
@@ -93,7 +94,7 @@ public class Jeu {
 	}
 	public static void copierCarte(int valDerCarte) {
 		Jeu.setValeurDerniereCartePosee(valDerCarte);
-		System.out.println("La carte est copiee");
+		//System.out.println("La carte est copiee");
 	}
 	public static int donnerValeur(String carte) {
 		int valeur = 0;

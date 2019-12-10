@@ -32,14 +32,31 @@ public class Joueurs {
 		String str = "";
 		int j = 0;
 		str += "Quelle Carte voulez vous jouer?; \n";
-	for (int i = 0; i < getCartesMain().size(); i++) {
-		j = i +1;
-		str += "Taper " + j +" pour: " + cartesMain.get(i) +"\n";
+		if(getCartesMain().size() > 0) {
+			System.out.println("Vous jouer avec les cartes en main");
+			for (int i = 0; i < getCartesMain().size(); i++) {
+				j = i +1;
+				str += "Taper " + j +" pour: " + cartesMain.get(i) +"\n";
+			}
+		}else if(getCartesVisibles().size() > 0 && getCartesMain().size() == 0) {
+			System.out.println("Vous jouer avec les cartes Visible");
+			for (int i = 0; i < getCartesVisibles().size(); i++) {
+				j = i +1;
+				str += "Taper " + j +" pour: " + cartesVisibles.get(i) +"\n";
+			}
+		}else if(getCartesCachees().size() > 0 && getCartesVisibles().size() == 0 && getCartesMain().size() == 0) {
+			System.out.println("Vous jouer avec les cartes Cachees");
+			for (int i = 0; i < getCartesVisibles().size(); i++) {
+				j = i +1;
+				str += "Taper " + j +" pour: " + cartesVisibles.get(i) +"\n";
+			}
+		}else if(getCartesCachees().size() > 0 && getCartesVisibles().size() == 0 && getCartesMain().size() == 0) {
+				System.out.println("BRAVO ! Vous gagner la partie");
 		}
-	j++;
-	str += "Taper " + j +" si vous devez passer votre tour";
-	System.out.println(str);
-	return str;
+		j++;
+		//str += "Taper " + j +" si vous devez passer votre tour";
+		System.out.println(str);
+		return str;
 	}
 	/**
 	 * Cette méthode permet à l'utilisateur de sélectionner la cartes qu'il veut jouer
@@ -57,33 +74,67 @@ public class Joueurs {
 	 */
 	public void verifierCarte(int carte) {
 		int carteMoinsUn = carte -1;
-		int valeur;
+		int valeur = 0;
 		int valeurDerniereCartePosee = Jeu.getValeurDerniereCartePosee();
 		
-		if(valeurDerniereCartePosee == 8) {
-			System.out.println("Vous passez votre tour, dommage!");
-			Jeu.setValeurDerniereCartePosee(Jeu.getCartesJouees().size() -1);
-		}else {
-	
-			valeur = Jeu.donnerValeur(cartesMain.get(carteMoinsUn));	
-			/**
-			 * Condition qui vérifie que l'on a le droit de jouer la carte
-			 */
-			if(valeurDerniereCartePosee == 7 && valeur <= valeurDerniereCartePosee ){
-				jouerCartes(valeur);
-				System.out.println(valeur);
-			}else if( valeur >= valeurDerniereCartePosee || valeur == 10 || valeur == 2 || valeur ==3) {
-				jouerCartes(valeur);
-			}else{
-				System.out.println("Vous ne pouvez pas jouer cette carte !");
-				System.out.println("Pas de bol, vous recuperer le paquet !");
-				recupererCartesJouees();
-				Jeu.setValeurDerniereCartePosee(0);
+		if(getCartesMain().size() > 0) {
+			valeur = Jeu.donnerValeur(cartesMain.get(carteMoinsUn));
+			if(valeurDerniereCartePosee == 8) {
+				System.out.println("Vous passez votre tour, dommage!");
+				Jeu.setValeurDerniereCartePosee(Jeu.getCartesJouees().size() -1);
+			}else {	
+				if(valeurDerniereCartePosee == 7 && valeur <= valeurDerniereCartePosee ){
+					jouerCartes(valeur);
+					System.out.println(valeur);
+				}else if( valeur >= valeurDerniereCartePosee || valeur == 10 || valeur == 2 || valeur ==3) {
+					jouerCartes(valeur);
+				}else{
+					System.out.println("Vous ne pouvez pas jouer cette carte !");
+					System.out.println("Pas de bol, vous recuperer le paquet !");
+					recupererCartesJouees();
+					Jeu.setValeurDerniereCartePosee(0);
+				}
+			}
+		}else if(getCartesVisibles().size() > 0 && getCartesMain().size() == 0) {
+			valeur = Jeu.donnerValeur(cartesVisibles.get(carteMoinsUn));
+			if(valeurDerniereCartePosee == 8) {
+				System.out.println("Vous passez votre tour, dommage!");
+				Jeu.setValeurDerniereCartePosee(Jeu.getCartesJouees().size() -1);
+			}else {	
+				if(valeurDerniereCartePosee == 7 && valeur <= valeurDerniereCartePosee ){
+					jouerCartes(valeur);
+					System.out.println(valeur);
+				}else if( valeur >= valeurDerniereCartePosee || valeur == 10 || valeur == 2 || valeur ==3) {
+					jouerCartes(valeur);
+				}else{
+					System.out.println("Vous ne pouvez pas jouer cette carte !");
+					System.out.println("Pas de bol, vous recuperer le paquet !");
+					recupererCartesJouees();
+					Jeu.setValeurDerniereCartePosee(0);
+				}
+			}
+		}else if(getCartesCachees().size() > 0 && getCartesVisibles().size() == 0 && getCartesMain().size() == 0) {
+			valeur = Jeu.donnerValeur(cartesCachees.get(carteMoinsUn));
+			if(valeurDerniereCartePosee == 8) {
+				System.out.println("Vous passez votre tour, dommage!");
+				Jeu.setValeurDerniereCartePosee(Jeu.getCartesJouees().size() -1);
+			}else {	
+				if(valeurDerniereCartePosee == 7 && valeur <= valeurDerniereCartePosee ){
+					jouerCartes(valeur);
+					System.out.println(valeur);
+				}else if( valeur >= valeurDerniereCartePosee || valeur == 10 || valeur == 2 || valeur ==3) {
+					jouerCartes(valeur);
+				}else{
+					System.out.println("Vous ne pouvez pas jouer cette carte !");
+					System.out.println("Pas de bol, vous recuperer le paquet !");
+					recupererCartesJouees();
+					Jeu.setValeurDerniereCartePosee(0);
+				}
 			}
 		}
+
 		
-		//System.out.println("carte jouee: " + Jeu.getCartesJouees() );
-		// Cette ligne sert a recuperer La valeur de la denière carte qui a ete jouee
+		
 	}
 	
 	public  void jouerCartes(int carte) {
@@ -94,29 +145,73 @@ public class Joueurs {
 		int carteMoinsUn = getCarte()-1;
 		int valeur = carte;
 		int valeurDerniereCartePosee = Jeu.getValeurDerniereCartePosee();
+		/**
+		 * Dans le cas ou on joue une carte en main
+		 */
+		if(getCartesMain().size() > 0) {
+			str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
+			m = Jeu.getCartesJouees();
+			m.add(getCartesMain().get(carteMoinsUn));
+			Jeu.setCartesJouees(m);
+			 
+			k = getCartesMain();
+			premiereCarte = Jeu.donnerCarte();
+			k.add(premiereCarte);
+			setCartesMain(k);
+			cartesMain.remove(carteMoinsUn);
+			str += "\nVous piocher la carte "+ premiereCarte;
+			
+			System.out.println(str);
+			
+			if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){
+				Jeu.setValeurDerniereCartePosee(0);
+			}else if(valeur == 3) {
+				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
+			}else {
+				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
+			}
+			Carte.estSpecial(valeur);
+			
+			/**
+			 * Dans le cas ou on joue une carte visible
+			 */	
+		}else if(getCartesVisibles().size() > 0 && getCartesMain().size() == 0) {
+			str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
+			m = Jeu.getCartesJouees();
+			m.add(getCartesVisibles().get(carteMoinsUn));
+			Jeu.setCartesJouees(m);
+			System.out.println(str);
+			
+			if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){
+				Jeu.setValeurDerniereCartePosee(0);
+			}else if(valeur == 3) {
+				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
+			}else {
+				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
+			}
+			Carte.estSpecial(valeur);
 		
-		str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
-		m = Jeu.getCartesJouees();
-		m.add(getCartesMain().get(carteMoinsUn));
-		Jeu.setCartesJouees(m);
-		 
-		k = getCartesMain();
-		premiereCarte = Jeu.donnerCarte();
-		k.add(premiereCarte);
-		setCartesMain(k);
-		cartesMain.remove(carteMoinsUn);
-		str += "\nVous piocher la carte "+ premiereCarte;
+		/**
+		 * Dans le cas ou on joue une carte cachées
+		 */
+		}else if(getCartesCachees().size() > 0 && getCartesVisibles().size() == 0 && getCartesMain().size() == 0) {
+			str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
+			m = Jeu.getCartesJouees();
+			m.add(getCartesCachees().get(carteMoinsUn));
+			Jeu.setCartesJouees(m);
+			System.out.println(str);
+			
+			if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){
+				Jeu.setValeurDerniereCartePosee(0);
+			}else if(valeur == 3) {
+				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
+			}else {
+				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
+			}
+			Carte.estSpecial(valeur);
+			}
 		
-		System.out.println(str);
-		
-		if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){
-			Jeu.setValeurDerniereCartePosee(0);
-		}else if(valeur == 3) {
-			Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
-		}else {
-			Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
-		}
-		Carte.estSpecial(valeur);
+
 	}
 	/**
 	 * Cette méthode va recuperer un int qui sera la valeur de la carte
@@ -137,7 +232,9 @@ public class Joueurs {
 			}
 		}
 	}
-	
+	public void recupererValeur() {
+		
+	}
 	
 	/**
 	 * @Override
@@ -203,5 +300,39 @@ public class Joueurs {
 	 */
 	public void setCarte(int carte) {
 		this.carte = carte;
+	}
+	
+	public void getCartesPosition(String position) {
+		
+		switch(position){
+		case "main":
+			getCartesMain();
+			break;
+		case "visible":
+			getCartesVisibles();
+			break;
+		case "cachee":
+			getCartesCachees();
+			break;
+		default:
+				System.out.println("Erreur position");
+		}
+	}
+	
+public void SetCartesPosition(String position, ArrayList<String> cartes) {
+		
+		switch(position){
+		case "main":
+			setCartesMain(cartes);
+			break;
+		case "visible":
+			setCartesVisibles(cartes);
+			break;
+		case "cachee":
+			setCartesCachees(cartes);
+			break;
+		default:
+				System.out.println("Erreur position");
+		}
 	}
 }
