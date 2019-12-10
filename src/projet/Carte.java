@@ -54,7 +54,6 @@ public class Carte{
 					Jeu.setValeurDerniereCartePosee(0);
 				}
 				*/
-				System.out.println("valderncarte " + Jeu.getValeurDerniereCartePosee());
 				break;
 			case 7:
 				System.out.println("Je suis special, Le suivant doit jouer une carte inférieure à 7"); 
