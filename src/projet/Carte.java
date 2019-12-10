@@ -66,10 +66,9 @@ public class Carte{
 				Jeu.couperCartes();
 				break;
 			case 14: 
-				System.out.println("Je suis special, j' attaque un joueur de mon choix"); 
+				//System.out.println("Je suis special, j' attaque un joueur de mon choix"); 
 				break;
 			default : 
-				System.out.println("Je suis banal");
 		}
 	}
 	public String toString(){

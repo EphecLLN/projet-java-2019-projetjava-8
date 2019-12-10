@@ -86,6 +86,11 @@ public class Joueurs {
 				if(valeurDerniereCartePosee == 7 && valeur <= valeurDerniereCartePosee ){
 					jouerCartes(valeur);
 					System.out.println(valeur);
+				}else if(valeurDerniereCartePosee == 7 && valeur >= valeurDerniereCartePosee ){
+					System.out.println("Vous ne pouvez pas jouer cette carte !");
+					System.out.println("Pas de bol, vous recuperer le paquet !");
+					recupererCartesJouees();
+					Jeu.setValeurDerniereCartePosee(0);
 				}else if( valeur >= valeurDerniereCartePosee || valeur == 10 || valeur == 2 || valeur ==3) {
 					jouerCartes(valeur);
 				}else{
@@ -104,6 +109,11 @@ public class Joueurs {
 				if(valeurDerniereCartePosee == 7 && valeur <= valeurDerniereCartePosee ){
 					jouerCartes(valeur);
 					System.out.println(valeur);
+				}else if(valeurDerniereCartePosee == 7 && valeur >= valeurDerniereCartePosee ){
+					System.out.println("Vous ne pouvez pas jouer cette carte !");
+					System.out.println("Pas de bol, vous recuperer le paquet !");
+					recupererCartesJouees();
+					Jeu.setValeurDerniereCartePosee(0);
 				}else if( valeur >= valeurDerniereCartePosee || valeur == 10 || valeur == 2 || valeur ==3) {
 					jouerCartes(valeur);
 				}else{
@@ -122,6 +132,11 @@ public class Joueurs {
 				if(valeurDerniereCartePosee == 7 && valeur <= valeurDerniereCartePosee ){
 					jouerCartes(valeur);
 					System.out.println(valeur);
+				}else if(valeurDerniereCartePosee == 7 && valeur >= valeurDerniereCartePosee ){
+					System.out.println("Vous ne pouvez pas jouer cette carte !");
+					System.out.println("Pas de bol, vous recuperer le paquet !");
+					recupererCartesJouees();
+					Jeu.setValeurDerniereCartePosee(0);
 				}else if( valeur >= valeurDerniereCartePosee || valeur == 10 || valeur == 2 || valeur ==3) {
 					jouerCartes(valeur);
 				}else{
@@ -138,6 +153,7 @@ public class Joueurs {
 	}
 	
 	public  void jouerCartes(int carte) {
+		System.out.println("COUCOU");
 		String str ="";
 		String premiereCarte;
 		ArrayList<String> m;
@@ -153,20 +169,23 @@ public class Joueurs {
 			m = Jeu.getCartesJouees();
 			m.add(getCartesMain().get(carteMoinsUn));
 			Jeu.setCartesJouees(m);
-			 
-			k = getCartesMain();
-			premiereCarte = Jeu.donnerCarte();
-			k.add(premiereCarte);
-			setCartesMain(k);
 			cartesMain.remove(carteMoinsUn);
-			str += "\nVous piocher la carte "+ premiereCarte;
 			
+			if(getCartesMain().size() < 3) {
+				k = getCartesMain();
+				premiereCarte = Jeu.donnerCarte();
+				k.add(premiereCarte);
+				setCartesMain(k);
+				str += "\nVous piocher la carte "+ premiereCarte;
+			}
 			System.out.println(str);
 			
 			if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){
 				Jeu.setValeurDerniereCartePosee(0);
-			}else if(valeur == 3) {
+			}else if(valeur == 3 && Jeu.getCartesJouees().size() > 1) {
 				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
+			}else if (valeur == 3 && Jeu.getCartesJouees().size() == 1){
+				Jeu.setValeurDerniereCartePosee(0);
 			}else {
 				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
 			}
@@ -224,12 +243,14 @@ public class Joueurs {
 	 */
 	public void recupererCartesJouees() {
 		while (Jeu.getCartesJouees().size() > 0) {
-			ArrayList<String> a;
-			a = Jeu.getCartesJouees();
-			getCartesMain().addAll(a);
-			for (int i =0; i<Jeu.getCartesJouees().size(); i++) {
-				Jeu.getCartesJouees().remove(i);
-			}
+			String a;
+			a = Jeu.getCartesJouees().get(0);
+			getCartesMain().add(a);
+			System.out.println("bbb");
+			System.out.println(Jeu.getCartesJouees() + "1");
+			System.out.println(getCartesMain() + "2");
+			Jeu.getCartesJouees().remove(0);
+			
 		}
 	}
 	public void recupererValeur() {
