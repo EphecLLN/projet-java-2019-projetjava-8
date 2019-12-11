@@ -81,7 +81,7 @@ public class Joueurs {
 			valeur = Jeu.donnerValeur(cartesMain.get(carteMoinsUn));
 			if(valeurDerniereCartePosee == 8) {
 				System.out.println("Vous passez votre tour, dommage!");
-				Jeu.setValeurDerniereCartePosee(Jeu.getCartesJouees().size() -1);
+				Jeu.setValeurDerniereCartePosee(9);
 			}else {	
 				if(valeurDerniereCartePosee == 7 && valeur <= valeurDerniereCartePosee ){
 					jouerCartes(valeur);
@@ -104,7 +104,7 @@ public class Joueurs {
 			valeur = Jeu.donnerValeur(cartesVisibles.get(carteMoinsUn));
 			if(valeurDerniereCartePosee == 8) {
 				System.out.println("Vous passez votre tour, dommage!");
-				Jeu.setValeurDerniereCartePosee(Jeu.getCartesJouees().size() -1);
+				Jeu.setValeurDerniereCartePosee(9);
 			}else {	
 				if(valeurDerniereCartePosee == 7 && valeur <= valeurDerniereCartePosee ){
 					jouerCartes(valeur);
@@ -127,7 +127,7 @@ public class Joueurs {
 			valeur = Jeu.donnerValeur(cartesCachees.get(carteMoinsUn));
 			if(valeurDerniereCartePosee == 8) {
 				System.out.println("Vous passez votre tour, dommage!");
-				Jeu.setValeurDerniereCartePosee(Jeu.getCartesJouees().size() -1);
+				Jeu.setValeurDerniereCartePosee(9);
 			}else {	
 				if(valeurDerniereCartePosee == 7 && valeur <= valeurDerniereCartePosee ){
 					jouerCartes(valeur);
@@ -171,7 +171,7 @@ public class Joueurs {
 			Jeu.setCartesJouees(m);
 			cartesMain.remove(carteMoinsUn);
 			
-			if(getCartesMain().size() < 3) {
+			if(getCartesMain().size() < 3 && Deck.getPaquetCarteMelange().size() > 0) {
 				k = getCartesMain();
 				premiereCarte = Jeu.donnerCarte();
 				k.add(premiereCarte);
@@ -195,10 +195,11 @@ public class Joueurs {
 			 * Dans le cas ou on joue une carte visible
 			 */	
 		}else if(getCartesVisibles().size() > 0 && getCartesMain().size() == 0) {
-			str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
+			str = "Vous jouer la carte " + cartesVisibles.get(carteMoinsUn);
 			m = Jeu.getCartesJouees();
 			m.add(getCartesVisibles().get(carteMoinsUn));
 			Jeu.setCartesJouees(m);
+			cartesVisibles.remove(carteMoinsUn);
 			System.out.println(str);
 			
 			if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){
@@ -214,10 +215,11 @@ public class Joueurs {
 		 * Dans le cas ou on joue une carte cachées
 		 */
 		}else if(getCartesCachees().size() > 0 && getCartesVisibles().size() == 0 && getCartesMain().size() == 0) {
-			str = "Vous jouer la carte " + cartesMain.get(carteMoinsUn);
+			str = "Vous jouer la carte " + cartesCachees.get(carteMoinsUn);
 			m = Jeu.getCartesJouees();
 			m.add(getCartesCachees().get(carteMoinsUn));
 			Jeu.setCartesJouees(m);
+			cartesCachees.remove(carteMoinsUn);
 			System.out.println(str);
 			
 			if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){
