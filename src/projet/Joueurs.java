@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * @author Jean Cornil
+ * @author Simon Magnes & Humbert Meyers
  *
  */
 public class Joueurs {
@@ -16,6 +16,7 @@ public class Joueurs {
 	private ArrayList<String> cartesVisibles;
 	private  ArrayList<String> cartesMain;
 	private static int carte;
+	private int selection;
 	
 	public Joueurs(){
 		//ArrayList<String>carteCachees = new ArrayList();
@@ -30,30 +31,30 @@ public class Joueurs {
 	 */
 	public String demanderCarteAJouer() {
 		String str = "";
-		int j = 0;
+		this.selection = 0;
 		str += "Quelle Carte voulez vous jouer?; \n";
 		if(getCartesMain().size() > 0) {
 			System.out.println("Vous jouer avec les cartes en main");
 			for (int i = 0; i < getCartesMain().size(); i++) {
-				j = i +1;
-				str += "Taper " + j +" pour: " + cartesMain.get(i) +"\n";
+				this.selection = i +1;
+				str += "Taper " + this.selection +" pour: " + cartesMain.get(i) +"\n";
 			}
 		}else if(getCartesVisibles().size() > 0 && getCartesMain().size() == 0) {
 			System.out.println("Vous jouer avec les cartes Visible");
 			for (int i = 0; i < getCartesVisibles().size(); i++) {
-				j = i +1;
-				str += "Taper " + j +" pour: " + cartesVisibles.get(i) +"\n";
+				this.selection = i +1;
+				str += "Taper " + this.selection +" pour: " + cartesVisibles.get(i) +"\n";
 			}
 		}else if(getCartesCachees().size() > 0 && getCartesVisibles().size() == 0 && getCartesMain().size() == 0) {
 			System.out.println("Vous jouer avec les cartes Cachees");
 			for (int i = 0; i < getCartesVisibles().size(); i++) {
-				j = i +1;
-				str += "Taper " + j +" pour: " + cartesVisibles.get(i) +"\n";
+				this.selection = i +1;
+				str += "Taper " + this.selection +" pour: " + cartesVisibles.get(i) +"\n";
 			}
 		}else if(getCartesCachees().size() > 0 && getCartesVisibles().size() == 0 && getCartesMain().size() == 0) {
 				System.out.println("BRAVO ! Vous gagner la partie");
 		}
-		j++;
+		this.selection++;
 		//str += "Taper " + j +" si vous devez passer votre tour";
 		System.out.println(str);
 		return str;
@@ -65,6 +66,10 @@ public class Joueurs {
 	public int choisirCarte() {
 		Scanner sc = new Scanner(System.in);
 		carte = sc.nextInt();
+		while(this.selection < carte+1) {
+			System.out.println("Reessaye");
+			choisirCarte();
+		}
 		return carte;
 	}
 	

@@ -3,9 +3,11 @@
  */
 package controller;
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import projet.*;
+import vue.*;
 
 /**
  * @author Humbert MEYERS
@@ -14,13 +16,23 @@ import java.util.Scanner;
 
 public class JeuController {
 
-	projet.Jeu jeu;
-	vue.JeuVue jVue;
+	Jeu jeu;
+	JeuVue jVue;
 	
 	/**
-	 * constructeur.
+	 * le constructeur
 	 */
 	public JeuController(projet.Jeu jeu) {
 		this.jeu = jeu;
+	}
+	
+	
+	/**
+	 * ajoute une vue
+	 * @param jVue vue
+	 */
+	public void addView(JeuVue jVue) {
+		this.jVue = jVue;
+		
 	}
 }
