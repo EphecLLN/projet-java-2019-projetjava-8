@@ -103,6 +103,7 @@ public class Jeu extends Observable {
 	}
 	public static int donnerValeur(String carte) {
 		int valeur = 0;
+		
 		if(carte.indexOf('2') != -1) {
 			valeur = 2;
 		}else if(carte.indexOf('3') != -1) {
@@ -143,7 +144,7 @@ public class Jeu extends Observable {
 	 * @param cartesJouees the cartesJouees to set
 	 */
 	public static void setCartesJouees(ArrayList<String> cartesJouees) {
-		cartesJouees = cartesJouees;
+		Jeu.cartesJouees = cartesJouees;
 	}
 	/**
 	 * @return the paquetDeck

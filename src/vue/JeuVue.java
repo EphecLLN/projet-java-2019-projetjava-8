@@ -2,12 +2,12 @@ package vue;
 
 import java.util.*;
 
+@SuppressWarnings("deprecation")
 public abstract class JeuVue implements Observer{
 	
 	protected projet.Jeu j;
 	protected controller.JeuController jControl;
 
-	@SuppressWarnings("deprecation")
 	public JeuVue(projet.Jeu jeu, controller.JeuController controller) {
 		this.j = jeu;
 		this.jControl = controller;
