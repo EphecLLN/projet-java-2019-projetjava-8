@@ -4,13 +4,15 @@
 package projet;
 
 import java.util.ArrayList;
+import java.util.Observable;
 import java.util.Scanner;
 /**
  * @author Simon
  *
  */
 
-public class Jeu {
+@SuppressWarnings("deprecation")
+public class Jeu extends Observable {
     private static Deck paquetDeck = new Deck();
 	static int nbJoueurs = 3;
     private static int valeurDerniereCartePosee = 0;
