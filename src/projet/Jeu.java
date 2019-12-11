@@ -39,7 +39,7 @@ public class Jeu {
 	 * Méthode qui prend la première carte du paquet et la supprime de celui-ci
 	 */
 	public static String donnerCarte() {
-		String str = null;
+		String str = "";
 		if( Deck.getPaquetCarteMelange().size() == 0) {
 			System.out.println("Pioche vide");
 		}else {
