@@ -12,7 +12,6 @@ import java.util.Scanner;
  *
  */
 
-
 public class JeuController {
 
 	projet.Jeu jeu;
