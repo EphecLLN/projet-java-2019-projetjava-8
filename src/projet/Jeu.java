@@ -101,38 +101,40 @@ public class Jeu extends Observable {
 		Jeu.setValeurDerniereCartePosee(valDerCarte);
 		//System.out.println("La carte est copiee");
 	}
-	public static int donnerValeur(String carte) {
-		int valeur = 0;
+	public static String donnerValeur(String carte) {
+		String valeur = "0";
 		
 		if(carte.indexOf('2') != -1) {
-			valeur = 2;
+			valeur = "2";
 		}else if(carte.indexOf('3') != -1) {
-			valeur = 3;
+			valeur = "3";
 		}else if(carte.indexOf('4') != -1) {
-			valeur = 4;
+			valeur = "4";
 		}else if(carte.indexOf('5') != -1) {
-			valeur = 5;
+			valeur = "5";
 		}else if(carte.indexOf('6') != -1) {
-			valeur = 6;
+			valeur = "6";
 		}else if(carte.indexOf('7') != -1) {
-			valeur = 7;
+			valeur = "7";
 		}else if(carte.indexOf('8') != -1) {
-			valeur = 8;
+			valeur = "8";
 		}else if(carte.indexOf('9') != -1) {
-			valeur = 9;
+			valeur = "9";
 		}else if(carte.indexOf("10") != -1) {
-			valeur = 10;
+			valeur = "10";
 		}else if(carte.indexOf("Valet") != -1) {
-			valeur = 11;
+			valeur = "Valet";
 		}else if(carte.indexOf("Dame") != -1) {
-			valeur = 12;
+			valeur = "Dame";
 		}else if(carte.indexOf("Roi") != -1) {
-			valeur = 13;
+			valeur = "Roi";
 		}else if(carte.indexOf("As") != -1) {
-			valeur = 14;
+			valeur = "As";
 		}
 		return valeur;
 	}
+	
+	
 	 /**
 	 * @return the cartesJouees
 	 */
@@ -203,7 +205,7 @@ public class Jeu extends Observable {
 						for( i = 0; i <nbJoueurs ; i++) {
 								System.out.println(" Joueur: " + i );
 								joueur[i].demanderCarteAJouer();
-								System.out.println("Vous devez jouer une valeur au dessus de : " + valeurDerniereCartePosee);
+								System.out.println("Vous devez jouer une valeur au dessus de : " + Joueurs.recupererFigures(valeurDerniereCartePosee));
 								joueur[i].choisirCarte();
 								joueur[i].verifierCarte(joueur[i].getCarte());
 								System.out.println("\n");
