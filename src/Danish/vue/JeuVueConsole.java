@@ -3,6 +3,8 @@ package vue;
 
 import java.util.*;
 import javax.swing.JPanel;
+
+import Danish.controller.JeuController;
 import projet.*;
 import controller.*;
 
@@ -35,19 +37,39 @@ public class JeuVueConsole extends JeuVue implements Observer {
 		
 	}
 	
+	/**
+	 * set la variable end a true pour terminer la partie.
+	 */
+	private void fin() {
+		this.fin = true;
+	}
+
+	/**
+	 * affiche l exception en cas de catch.
+	 */
+	private void printHelpException(){
+		this.affiche("Format d'entree non conforme, sans doute une lettre alphabetique.");
+	}
+	
 	private class ReadInput implements Runnable{
 		public void run() {
 			while(!fin){
 				try {
-					jControl.printTextMenu(i, 0); 
-					i = scan.nextInt();
+					//jControl.printTextMenu(i, 0); 
+					//i = scan.nextInt();
 					
-					affiche("---------- Votre partie de Beat The Donjon va commencer... ----------");
+					affiche("---------- Votre partie va bientot commencer ... ----------");
+					fin();
+				}
+				catch(InputMismatchException e){
+					affiche("Format d'input incorrect");
+					printHelpException();
+					System.exit(0);
 				}
 			}
 		}
 	}
-
+	
 	/**
 	 * @return the fin
 	 */

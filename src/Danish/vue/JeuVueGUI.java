@@ -7,6 +7,11 @@ import javax.swing.*;
 import controller.*;
 import projet.*;
 import java.awt.event.ActionEvent;
+import javax.swing.event.MenuListener;
+
+import Danish.controller.JeuController;
+
+import javax.swing.event.MenuEvent;
 
 @SuppressWarnings("deprecation")
 public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
@@ -31,6 +36,7 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 	JMenuItem menuRegles = new JMenuItem("Règles");
 	JMenuItem menuInfos = new JMenuItem("Infos");
 	JMenuItem menuQuitter = new JMenuItem("Quitter");
+	private JTextField txtRgles;
 	
 	/**
 	 * Create the panel.
@@ -54,7 +60,7 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 			jeuRegles = new JPanel();
 			jeuInfos = new JPanel();
 			
-			onClickJouer();
+			onClickRegles();
 			
 			jeuJFrame.setVisible(true);
 			jouer.addActionListener(this);
@@ -105,6 +111,7 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 		jeuPartie.setSize(800, 800);
 		jeuMenu.setVisible(false);
 		
+		
 		menuMenu.setBounds(0, 0, 124, 19);
 		jeuPartie.add(menuMenu);
 		menuMenu.add(menuMenuPrincipal);
@@ -133,6 +140,22 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 		menuMenu.add(menuQuitter);
 		
 		jeuJFrame.getContentPane().add(jeuRegles);
+		
+		JTextPane txtpnLePeut = new JTextPane();
+		txtpnLePeut.setEditable(false);
+		txtpnLePeut.setText("Les règles du jeu sont simple :\n\nLe 2, peut être joué sur n'importe quelle valeur, remet à 0 la valeur sur laquelle jouer.\n\nLe 3, peut être joué sur n'importe quelle valeur, agit comme un miroir. Cette carte copie la dernière carte jouée sur la table. Si table de jeu est vide, valeur de la carte = 3\n\nLe 7, la prochaine carte jouée doit obligatoirement être inférieure ou égale à 7.\n\nLe 8, le joueur suivant passe son tour. Il n'est pas possible de mettre un deuxième 8 par dessus\n\nLe 10, peut être jouée sur n'importe quelle valeur, coupe le jeu. Le tas coupé est éliminer de la table de jeu e ne peux plus être récupéré par un joueur.\n\nL'AS, Valeur maximale. Le joueur jouant un AS choisit un autre joueur qu'il \"attaque\", Si le joueur attaqué ne sait pas répondre par un 2, un 10, un 3, ou un AS, il récupère le tas de cartes jouées. L'AS joué est directement ajoutée à la pile coupée.");
+		txtpnLePeut.setBounds(150, 150, 500, 500);
+		jeuRegles.add(txtpnLePeut);
+		
+		txtRgles = new JTextField();
+		txtRgles.setAutoscrolls(false);
+		txtRgles.setFont(new Font("Lucida Grande", Font.BOLD, 26));
+		txtRgles.setBackground(SystemColor.window);
+		txtRgles.setEditable(false);
+		txtRgles.setText("  RÈGLES");
+		txtRgles.setBounds(325, 100, 150, 42);
+		jeuRegles.add(txtRgles);
+		txtRgles.setColumns(10);
 		
 	}
 	/**

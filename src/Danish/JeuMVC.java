@@ -1,5 +1,5 @@
-package projet;
 
+import Danish.controller.JeuController;
 import controller.*;
 import vue.*;
 

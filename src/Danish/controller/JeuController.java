@@ -1,7 +1,7 @@
 /**
  * 
  */
-package controller;
+package Danish.controller;
 
 import java.util.ArrayList;
 import java.util.Scanner;
