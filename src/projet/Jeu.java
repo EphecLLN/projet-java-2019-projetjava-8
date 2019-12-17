@@ -185,8 +185,6 @@ public class Jeu extends Observable {
 	public void setCartesCoupees(ArrayList<String> cartesCoupees) {
 		this.cartesCoupees = cartesCoupees;
 	}
-
-	
 	
 	public static void main(String[] args) {
 		final Jeu game = new Jeu();
@@ -205,11 +203,22 @@ public class Jeu extends Observable {
 						for( i = 0; i <nbJoueurs ; i++) {
 								System.out.println(" Joueur: " + i );
 								joueur[i].demanderCarteAJouer();
-								System.out.println("Vous devez jouer une valeur au dessus de : " + Joueurs.recupererFigures(valeurDerniereCartePosee));
+								
+								/*
+								 * Modification du texte lors de la pose d'un 7
+								 */
+								switch (Joueurs.recupererFigures(valeurDerniereCartePosee)) {
+								case "7":
+									System.out.println("Vous devez jouer une valeur en dessous de : " + Joueurs.recupererFigures(valeurDerniereCartePosee));
+									break;
+								default:
+									System.out.println("Vous devez jouer une valeur au dessus de : " + Joueurs.recupererFigures(valeurDerniereCartePosee));
+									break;
+								}
 								joueur[i].choisirCarte();
 								joueur[i].verifierCarte(joueur[i].getCarte());
 								System.out.println("\n");
-								System.out.println(Deck.getPaquetCarteMelange().size());
+								System.out.println("Il reste " + Deck.getPaquetCarteMelange().size() + " carte(s) dans le paquet");
 						}
 					}
 				}

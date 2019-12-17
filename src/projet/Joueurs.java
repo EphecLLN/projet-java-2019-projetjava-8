@@ -161,7 +161,8 @@ public class Joueurs {
 	}
 	
 	public  void jouerCartes(int carte) {
-		System.out.println("COUCOU");
+		//System.out.println("COUCOU");
+		System.out.println("");
 		String str ="";
 		String premiereCarte;
 		ArrayList<String> m;

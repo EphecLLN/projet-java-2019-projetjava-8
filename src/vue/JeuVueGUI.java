@@ -33,23 +33,22 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 			super(model, jControl);
 			
 			//Construction de la fenetre
-			jeuJFrame = new JFrame(" ");
+			jeuJFrame = new JFrame("Danish");
 			jeuJFrame.setSize(800, 800);
 			jeuJFrame.setPreferredSize(new Dimension(800,800));
-			jeuJFrame.setTitle("Danish");
 			
 			jeuJFrame.setLocationRelativeTo(null);
 			jeuJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			jeuJFrame.getContentPane().setLayout(null);
 			
-			jeuMenu = new JPanel();
 			
+			jeuMenu = new JPanel();
 			jeuPartie = new JPanel();
 			jeuRegles = new JPanel();
 			jeuInfos = new JPanel();
 			
 			
-			menuDemarrer();
+			onClickJouer();
 			
 			jeuJFrame.setVisible(true);
 			
@@ -86,20 +85,31 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 		Bienvenue.setBounds(200, 150, 400, 100);
 		jeuMenu.add(Bienvenue);
 		
+		jeuPartie.setVisible(false);
+		jeuRegles.setVisible(false);
+		jeuInfos.setVisible(false);
 		jeuMenu.setVisible(true);
 		jeuJFrame.getContentPane().add(jeuMenu);
 	}
+
 	
 	
 	/**
 	 * Gestion du clic de lancement de partie.
 	 */
 	public void onClickJouer() {
+		/*
+		jouer.setBounds(300, 300, 200, 30);
+		regles.setBounds(300, 325, 200, 30);
+		infos.setBounds(300, 350, 200, 30);
+		quitter.setBounds(300, 375, 200, 30);
+		*/
+		jeuPartie.setLayout(null);
+		jeuPartie.add(menu);
+		
 		jeuPartie.setSize(800, 800);
 		jeuMenu.setVisible(false);
 		jeuPartie.setVisible(true);
-		
-		jeuJFrame.getContentPane().remove(jeuMenu);
 		jeuJFrame.getContentPane().add(jeuPartie);
 		
 	}
@@ -108,33 +118,24 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 	 */
 	public void onClickRegles() {
 		jeuRegles.setSize(800, 800);
+		jeuRegles.setLayout(null);
+		jeuRegles.add(menu);
 		
 		jeuMenu.setVisible(false);
 		jeuRegles.setVisible(true);
-		
-		
-		jeuJFrame.getContentPane().remove(jeuMenu);
 		jeuJFrame.getContentPane().add(jeuRegles);
-		/*
-		jouerB.setVisible(false);
-		quitterB.setVisible(false);
-		chargerB.setVisible(false);
-		label.setVisible(false);
-		afficheChoixPerso(1); // sert a pouvoir sauter les etapes de choix perso
-		jControl.menu(2, 1);
-		afficheJeu();
-		*/
+		
 	}
 	/**
 	 * Gestion du clic d'affichage des infos.
 	 */
 	public void onClickInfos() {
 		jeuInfos.setSize(800, 800);
+		jeuInfos.setLayout(null);
+		jeuInfos.add(menu);
 		
 		jeuMenu.setVisible(false);
 		jeuInfos.setVisible(true);
-		
-		jeuJFrame.getContentPane().remove(jeuMenu);
 		jeuJFrame.getContentPane().add(jeuInfos);
 		
 	}
