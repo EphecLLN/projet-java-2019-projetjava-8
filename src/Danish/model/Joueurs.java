@@ -14,9 +14,11 @@ public class Joueurs {
 	
 	private ArrayList<String> cartesCachees;
 	private ArrayList<String> cartesVisibles;
-	private  ArrayList<String> cartesMain;
+	private ArrayList<String> cartesMain;
 	private static int carte;
 	private int selection;
+	Scanner sc = new Scanner(System.in);
+	private boolean tourFini = false;
 	
 	public Joueurs(){
 		//ArrayList<String>carteCachees = new ArrayList();
@@ -64,7 +66,6 @@ public class Joueurs {
 	 * @return la carte à jouer
 	 */
 	public int choisirCarte() {
-		Scanner sc = new Scanner(System.in);
 		carte = sc.nextInt();
 		while(this.selection < carte+1) {
 			if(carte ==99) {
@@ -75,6 +76,7 @@ public class Joueurs {
 			System.out.println("Reessaye");
 			choisirCarte();
 		}
+		
 		return carte;
 	}
 	
@@ -395,4 +397,10 @@ public void SetCartesPosition(String position, ArrayList<String> cartes) {
 				System.out.println("Erreur position");
 		}
 	}
+public boolean isTourFini() {
+	return tourFini;
+}
+public void setTourFini(boolean tourFini) {
+	this.tourFini = tourFini;
+}
 }

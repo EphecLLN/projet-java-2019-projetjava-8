@@ -16,6 +16,8 @@ public abstract class JeuVue implements Observer{
 		this.jControl = controller;
 		j.addObserver(this); // Connexion entre la vue et le modele
 	}
-
-	public abstract void affiche(String string) ;
+	
+	public abstract String input(String texte);
+	public abstract void affiche(String string);
+	public abstract void menu();
 }

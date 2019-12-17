@@ -3,9 +3,8 @@
  */
 package Danish.model;
 
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Scanner;
+import java.util.*;
+
 /**
  * @author Simon
  *
@@ -14,7 +13,7 @@ import java.util.Scanner;
 @SuppressWarnings("deprecation")
 public class Jeu extends Observable {
     private static Deck paquetDeck = new Deck();
-	static int nbJoueurs = 3;
+    ArrayList<Joueurs> joueurs = new ArrayList<Joueurs>();
     private static int valeurDerniereCartePosee = 0;
     private static int nombreDeCartes = 3;
     private static ArrayList<String> cartesCoupees;
@@ -28,8 +27,7 @@ public class Jeu extends Observable {
         Deck paquetDeck = new Deck();
         paquetDeck.melange(200);
         paquetDeck.tabToArray();
-        joueur = new Joueurs[nbJoueurs];
-        for (int i = 0; i< nbJoueurs; i++) {
+        for (int i = 0; i < getJoueurs().size(); i++) {
         	joueur[i] = new Joueurs();
         }   
         cartesJouees = new ArrayList<String>();
@@ -134,6 +132,14 @@ public class Jeu extends Observable {
 		return valeur;
 	}
 	
+	public void videJoueur(){
+		this.joueurs.clear();
+	}
+	
+	public void addJoueur(){
+			this.joueurs.add(new Joueurs());
+	}
+	
 	
 	 /**
 	 * @return the cartesJouees
@@ -160,6 +166,18 @@ public class Jeu extends Observable {
 	 */
 	public static void setPaquetDeck(Deck paquetDeck) {
 		Jeu.paquetDeck = paquetDeck;
+	}
+	/**
+	 * @return the joueurs
+	 */
+	public ArrayList<Joueurs> getJoueurs() {
+		return joueurs;
+	}
+	/**
+	 * @param joueurs the joueurs to set
+	 */
+	public void setJoueurs(ArrayList<Joueurs> joueurs) {
+		this.joueurs = joueurs;
 	}
 	/**
 	 * @return the valeurDerniereCartePosee

@@ -60,7 +60,7 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 			jeuRegles = new JPanel();
 			jeuInfos = new JPanel();
 			
-			onClickRegles();
+			menuDemarrer();
 			
 			jeuJFrame.setVisible(true);
 			jouer.addActionListener(this);
