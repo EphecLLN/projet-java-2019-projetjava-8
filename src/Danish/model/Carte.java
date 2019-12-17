@@ -1,7 +1,7 @@
 /**
  * 
  */
-package projet;
+package Danish.model;
 
 /**
  * @author Simon

@@ -1,14 +1,17 @@
-package vue;
+package Danish.vue;
 
 import java.util.*;
+
+import Danish.model.*;
+import Danish.controller.*;
 
 @SuppressWarnings("deprecation")
 public abstract class JeuVue implements Observer{
 	
-	protected projet.Jeu j;
-	protected Danish.controller.JeuController jControl;
+	protected Jeu j;
+	protected JeuController jControl;
 
-	public JeuVue(projet.Jeu jeu, Danish.controller.JeuController controller) {
+	public JeuVue(Jeu jeu, JeuController controller) {
 		this.j = jeu;
 		this.jControl = controller;
 		j.addObserver(this); // Connexion entre la vue et le modele

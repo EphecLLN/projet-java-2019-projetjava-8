@@ -6,8 +6,8 @@ package Danish.controller;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import projet.*;
-import vue.*;
+import Danish.model.*;
+import Danish.vue.*;
 
 /**
  * @author Humbert MEYERS
@@ -22,7 +22,7 @@ public class JeuController {
 	/**
 	 * le constructeur
 	 */
-	public JeuController(projet.Jeu jeu) {
+	public JeuController(Jeu jeu) {
 		this.jeu = jeu;
 	}
 	
