@@ -9,7 +9,7 @@ public class JeuMVC {
 	JeuController jeuControleGUI;
 	JeuController jeuControleConsole;
 	JeuVue jeuVueGUI;
-	//JeuVue jeuVueConsole;
+	JeuVue jeuVueConsole;
 
 	public JeuMVC() {
 		//Creation du modele
@@ -20,18 +20,18 @@ public class JeuMVC {
 		//Chaque controleur doit avoir une reference vers le modele pour pouvoir le commander
 		
 		 jeuControleGUI = new JeuController(j);
-		 //jeuControleConsole = new JeuController(j);
+		 jeuControleConsole = new JeuController(j);
 				 
 		//Creation des vues.
 		//Chaque vue doit connaitre son controleur et avoir une reference vers le modele pour pouvoir l'observer
 		
 		 jeuVueGUI = new JeuVueGUI(j, jeuControleGUI);
-		 //jeuVueConsole = new JeuVueConsole(j, jeuControleConsole);
+		 jeuVueConsole = new JeuVueConsole(j, jeuControleConsole);
 		
 		//On donne le lien à la vue pour chaque controleur
 		
 		 jeuControleGUI.addView(jeuVueGUI);
-		 //jeuControleConsole.addView(jeuVueConsole);
+		 jeuControleConsole.addView(jeuVueConsole);
 		
 		
 	}
@@ -40,7 +40,6 @@ public class JeuMVC {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new JeuMVC();
-				//System.out.println("coucou2");
 			}
 		});
 	}
