@@ -18,12 +18,19 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 	private JPanel jeuInfos;
 	private JTextPane Bienvenue;
 	JLabel perso = new JLabel("");
-	
-	JButton menu = new JButton("Menu");
 	JButton jouer = new JButton("Démarrer la partie");
 	JButton regles = new JButton("Règles");
 	JButton infos = new JButton("Infos");
 	JButton quitter = new JButton("Quitter");
+	
+	
+	//Creation du menu une fois en jeu
+	JMenu menuMenu = new JMenu("Menu");
+	JMenuItem menuMenuPrincipal = new JMenuItem("Menu Principal");
+	JMenuItem menuJouer = new JMenuItem("Demarrer la partie");
+	JMenuItem menuRegles = new JMenuItem("Règles");
+	JMenuItem menuInfos = new JMenuItem("Infos");
+	JMenuItem menuQuitter = new JMenuItem("Quitter");
 	
 	/**
 	 * Create the panel.
@@ -47,14 +54,9 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 			jeuRegles = new JPanel();
 			jeuInfos = new JPanel();
 			
-			
 			onClickJouer();
 			
 			jeuJFrame.setVisible(true);
-			
-			
-			//Gestion des boutons
-			menu.addActionListener(this);
 			jouer.addActionListener(this);
 			regles.addActionListener(this);
 			infos.addActionListener(this);
@@ -98,18 +100,18 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 	 * Gestion du clic de lancement de partie.
 	 */
 	public void onClickJouer() {
-		/*
-		jouer.setBounds(300, 300, 200, 30);
-		regles.setBounds(300, 325, 200, 30);
-		infos.setBounds(300, 350, 200, 30);
-		quitter.setBounds(300, 375, 200, 30);
-		*/
 		jeuPartie.setLayout(null);
-		jeuPartie.add(menu);
 		
 		jeuPartie.setSize(800, 800);
 		jeuMenu.setVisible(false);
-		jeuPartie.setVisible(true);
+		
+		menuMenu.setBounds(0, 0, 124, 19);
+		jeuPartie.add(menuMenu);
+		menuMenu.add(menuMenuPrincipal);
+		menuMenu.add(menuRegles);
+		menuMenu.add(menuInfos);
+		menuMenu.add(menuQuitter);
+		
 		jeuJFrame.getContentPane().add(jeuPartie);
 		
 	}
@@ -119,10 +121,17 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 	public void onClickRegles() {
 		jeuRegles.setSize(800, 800);
 		jeuRegles.setLayout(null);
-		jeuRegles.add(menu);
 		
 		jeuMenu.setVisible(false);
 		jeuRegles.setVisible(true);
+		
+		menuMenu.setBounds(0, 0, 124, 19);
+		jeuRegles.add(menuMenu);
+		menuMenu.add(menuMenuPrincipal);
+		menuMenu.add(menuJouer);
+		menuMenu.add(menuInfos);
+		menuMenu.add(menuQuitter);
+		
 		jeuJFrame.getContentPane().add(jeuRegles);
 		
 	}
@@ -132,10 +141,17 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 	public void onClickInfos() {
 		jeuInfos.setSize(800, 800);
 		jeuInfos.setLayout(null);
-		jeuInfos.add(menu);
 		
 		jeuMenu.setVisible(false);
 		jeuInfos.setVisible(true);
+		
+		menuMenu.setBounds(0, 0, 124, 19);
+		jeuRegles.add(menuMenu);
+		menuMenu.add(menuMenuPrincipal);
+		menuMenu.add(menuJouer);
+		menuMenu.add(menuRegles);
+		menuMenu.add(menuQuitter);
+		
 		jeuJFrame.getContentPane().add(jeuInfos);
 		
 	}
@@ -159,16 +175,19 @@ public class JeuVueGUI extends JeuVue implements ActionListener, Observer {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		 Object  source = e.getSource();
-	     if  (source == jouer){
+		 if (source == menuMenuPrincipal){
+	    	 menuDemarrer();
+	     }
+		 else if (source == jouer && source == menuJouer){
 	    	 onClickJouer();
 	     }
-	     else if (source == regles) {
+	     else if (source == regles && source == menuRegles) {
 	    	 onClickRegles();
 	     }    
-	     else if (source == infos) {
+	     else if (source == infos && source == menuInfos) {
 	    	 onClickInfos();
 	     }
-	     else if (source == quitter) {
+	     else if (source == quitter && source == menuQuitter) {
 	    	 onClickQuitter();
 	     }
      }
