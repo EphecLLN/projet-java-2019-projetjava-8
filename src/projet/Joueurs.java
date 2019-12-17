@@ -67,6 +67,11 @@ public class Joueurs {
 		Scanner sc = new Scanner(System.in);
 		carte = sc.nextInt();
 		while(this.selection < carte+1) {
+			if(carte ==99) {
+				sc.close();
+				System.out.println("Partie quittée");
+				System.exit(0);
+			}
 			System.out.println("Reessaye");
 			choisirCarte();
 		}
@@ -79,11 +84,11 @@ public class Joueurs {
 	 */
 	public void verifierCarte(int carte) {
 		int carteMoinsUn = carte -1;
-		int valeur = 0;
+		int valeur = recupererValeur(Jeu.donnerValeur(cartesMain.get(carteMoinsUn)));
 		int valeurDerniereCartePosee = Jeu.getValeurDerniereCartePosee();
+
 		
 		if(getCartesMain().size() > 0) {
-			valeur = Jeu.donnerValeur(cartesMain.get(carteMoinsUn));
 			if(valeurDerniereCartePosee == 8) {
 				System.out.println("Vous passez votre tour, dommage!");
 				Jeu.setValeurDerniereCartePosee(9);
@@ -106,7 +111,6 @@ public class Joueurs {
 				}
 			}
 		}else if(getCartesVisibles().size() > 0 && getCartesMain().size() == 0) {
-			valeur = Jeu.donnerValeur(cartesVisibles.get(carteMoinsUn));
 			if(valeurDerniereCartePosee == 8) {
 				System.out.println("Vous passez votre tour, dommage!");
 				Jeu.setValeurDerniereCartePosee(9);
@@ -129,7 +133,6 @@ public class Joueurs {
 				}
 			}
 		}else if(getCartesCachees().size() > 0 && getCartesVisibles().size() == 0 && getCartesMain().size() == 0) {
-			valeur = Jeu.donnerValeur(cartesCachees.get(carteMoinsUn));
 			if(valeurDerniereCartePosee == 8) {
 				System.out.println("Vous passez votre tour, dommage!");
 				Jeu.setValeurDerniereCartePosee(9);
@@ -188,11 +191,13 @@ public class Joueurs {
 			if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){
 				Jeu.setValeurDerniereCartePosee(0);
 			}else if(valeur == 3 && Jeu.getCartesJouees().size() > 1) {
-				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
+				int val = recupererValeur(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
+				Jeu.setValeurDerniereCartePosee(val);
 			}else if (valeur == 3 && Jeu.getCartesJouees().size() == 1){
 				Jeu.setValeurDerniereCartePosee(0);
 			}else {
-				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
+				int val = recupererValeur(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
+				Jeu.setValeurDerniereCartePosee(val);
 			}
 			Carte.estSpecial(valeur);
 			
@@ -210,9 +215,11 @@ public class Joueurs {
 			if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){
 				Jeu.setValeurDerniereCartePosee(0);
 			}else if(valeur == 3) {
-				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
+				int val = recupererValeur(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
+				Jeu.setValeurDerniereCartePosee(val);
 			}else {
-				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
+				int val = recupererValeur(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
+				Jeu.setValeurDerniereCartePosee(val);
 			}
 			Carte.estSpecial(valeur);
 		
@@ -230,9 +237,11 @@ public class Joueurs {
 			if(Jeu.getCartesJouees().size() == 0 || valeur == 2 || valeur == 10){
 				Jeu.setValeurDerniereCartePosee(0);
 			}else if(valeur == 3) {
-				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
+				int val = recupererValeur(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-2)));
+				Jeu.setValeurDerniereCartePosee(val);
 			}else {
-				Jeu.setValeurDerniereCartePosee(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
+				int val = recupererValeur(Jeu.donnerValeur(Jeu.getCartesJouees().get(Jeu.getCartesJouees().size()-1)));
+				Jeu.setValeurDerniereCartePosee(val);
 			}
 			Carte.estSpecial(valeur);
 			}
@@ -253,16 +262,38 @@ public class Joueurs {
 			String a;
 			a = Jeu.getCartesJouees().get(0);
 			getCartesMain().add(a);
-			System.out.println("bbb");
-			System.out.println(Jeu.getCartesJouees() + "1");
-			System.out.println(getCartesMain() + "2");
+			//System.out.println("bbb");
+			//System.out.println(Jeu.getCartesJouees() + "1");
+			//System.out.println(getCartesMain() + "2");
 			Jeu.getCartesJouees().remove(0);
 			
 		}
 	}
-	public void recupererValeur() {
-		
+	
+	public int recupererValeur(String carte) {
+		int valeur = -1;
+		switch(carte) {
+			case "Valet" : valeur = 11; break;
+			case "Dame" : valeur = 12; break;
+			case "Roi" : valeur = 13; break;
+			case "As" : valeur = 14; break;
+			default : valeur = Integer.parseInt(carte);
+		}
+		return valeur;
 	}
+	
+	public static String recupererFigures(int carte) {
+		String valeur = "";
+		switch(carte) {
+			case 11 : valeur = "Valet"; break;
+			case 12 : valeur = "Dame"; break;
+			case 13 : valeur = "Roi"; break;
+			case 14 : valeur = "As"; break;
+			default : valeur = Integer.toString(carte);
+		}
+		return valeur;
+	}
+	
 	
 	/**
 	 * @Override
