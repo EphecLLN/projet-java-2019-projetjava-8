@@ -5,4 +5,4 @@
  * @author Simon
  *
  */
-package projet;
+package Danish.model;

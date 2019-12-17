@@ -1,11 +1,11 @@
-package vue;
+package Danish.vue;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.*;
-import controller.*;
-import projet.*;
+import Danish.controller.*;
+import Danish.model.*;
 import java.awt.event.ActionEvent;
 import javax.swing.event.MenuListener;
 

@@ -1,7 +1,8 @@
+package Danish;
 
-import Danish.controller.JeuController;
-import controller.*;
-import vue.*;
+import Danish.controller.*;
+import Danish.vue.*;
+import Danish.model.*;
 
 public class JeuMVC {
 

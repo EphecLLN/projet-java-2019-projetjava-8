@@ -1,4 +1,4 @@
-package projet;
+package Danish.model;
 
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,8 +10,6 @@ class JoueursTest {
 	@Test
 	void testConstructeurVide() {
 		Joueurs j = new Joueurs();
-		assertEquals(0, j.getId());
-		assertEquals(0, j.getNbrCartes());
 	}
 	@Test
 	void testConstructeur () {

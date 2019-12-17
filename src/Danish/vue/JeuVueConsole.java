@@ -1,12 +1,11 @@
-package vue;
+package Danish.vue;
 
 
 import java.util.*;
 import javax.swing.JPanel;
 
-import Danish.controller.JeuController;
-import projet.*;
-import controller.*;
+import Danish.controller.*;
+import Danish.model.*;
 
 @SuppressWarnings("deprecation")
 public class JeuVueConsole extends JeuVue implements Observer {
